@@ -1,0 +1,8 @@
+COMPOSE_FILE='fdb.yml'
+COMPOSE_PATH_SEPARATOR=','
+
+# system settings
+TIME_ZONE='Europe/Berlin'
+
+# shared secret for secure communication
+JWT_PRIVATE_KEY=

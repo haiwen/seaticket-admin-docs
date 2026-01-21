@@ -1,0 +1,25 @@
+# https://github.com/apple/foundationdb/blob/main/packaging/docker/samples/local/docker-compose.yml
+services:
+  fdb:
+    image: ${FDB_IMAGE:-foundationdb/foundationdb:7.3.63}
+    restart: unless-stopped
+    container_name: fdb
+    # ports:
+    #   - ${FDB_PORT:-4550}:${FDB_PORT:-4550}/tcp
+    volumes:
+      - ${FDB_VOLUME:-/opt/seaticket-data/fdb-data}:/var/fdb/data
+      - ./fdb.cluster:/var/fdb/fdb.cluster
+    environment:
+      FDB_NETWORKING_MODE: ${FDB_NETWORKING_MODE:-container}
+      FDB_COORDINATOR_PORT: ${FDB_PORT:-4550}
+      FDB_PORT: ${FDB_PORT:-4550}
+    healthcheck:
+      test: ["CMD", "fdbcli", "--exec", "status"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - seaticket
+
+networks:
+  seaticket:
