@@ -1,13 +1,136 @@
 services:
+  caddy:
+    image: ${CADDY_IMAGE:-lucaslorentz/caddy-docker-proxy:2.9-alpine}
+    restart: unless-stopped
+    container_name: caddy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "${CADDY_VOLUME:-/opt/caddy-data}:/data/caddy"
+    environment:
+      - CADDY_INGRESS_NETWORKS=frontend-net
+      - TZ=${TIME_ZONE}
+    networks:
+      - frontend-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:2019/metrics || exit 1"]
+      start_period: 20s
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
+  fdb:
+    image: ${FDB_IMAGE:-foundationdb/foundationdb:7.3.63}
+    restart: unless-stopped
+    container_name: fdb
+    volumes:
+      - ${FDB_VOLUME:-/opt/fdb-data}:/var/fdb/data
+      - ./fdb.cluster:/var/fdb/fdb.cluster
+    environment:
+      FDB_NETWORKING_MODE: ${FDB_NETWORKING_MODE:-container}
+      FDB_COORDINATOR_PORT: ${FDB_PORT:-4550}
+      FDB_PORT: ${FDB_PORT:-4550}
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "fdbcli", "--exec", "status"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql:
+    image: ${MYSQL_IMAGE:-mariadb:10.11}
+    restart: unless-stopped
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${INIT_MYSQL_ROOT_PASSWORD:-}
+      - MYSQL_LOG_CONSOLE=true
+      - MARIADB_MYSQL_LOCALHOST_USER=1
+      - MARIADB_MYSQL_LOCALHOST_GRANTS=USAGE
+      - MARIADB_AUTO_UPGRADE=1
+      - TZ=${TIME_ZONE}
+    volumes:
+      - "${MYSQL_VOLUME:-/opt/mysql-data}:/var/lib/mysql"
+    networks:
+      - backend-net
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/usr/local/bin/healthcheck.sh",
+          "--connect",
+          "--mariadbupgrade",
+          "--innodb_initialized",
+        ]
+      interval: 20s
+      start_period: 30s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: ${REDIS_IMAGE:-redis:8.0}
+    restart: unless-stopped
+    container_name: redis
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 20s
+      retries: 3
+      timeout: 5s
+
+  seaqa-web:
+    image: ${SEAQA_WEB_IMAGE:-seaticket/seaqa-web:0.1.0-testing}
+    restart: unless-stopped
+    container_name: seaqa-web
+    volumes:
+      - ./config.yml:/opt/seaticket/conf/config.yml
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
+    environment:
+      - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
+      - SEAQA_MYSQL_DB_PORT=${MYSQL_PORT:-3306}
+      - SEAQA_MYSQL_DB_USER=${MYSQL_USER:-seaticket}
+      - SEAQA_MYSQL_DB_PASSWORD=${MYSQL_PASSWORD:?Variable is not set or empty}
+      - SEAQA_MYSQL_SEAQA_DB_NAME=${MYSQL_DB_NAME:-seaticket_db}
+      - INIT_SEAQA_MYSQL_ROOT_PASSWORD=${INIT_MYSQL_ROOT_PASSWORD:-}
+      - INIT_ADMIN_EMAIL=${INIT_ADMIN_EMAIL:-}
+      - INIT_ADMIN_PASSWORD=${INIT_ADMIN_PASSWORD:-}
+      - REDIS_HOST=${REDIS_HOST:-redis}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
+      - TZ=${TIME_ZONE}
+      - SEATICKET_HOSTNAME=${SEATICKET_HOSTNAME:?Variable is not set or empty}
+      - SEATICKET_PROTOCOL=${SEATICKET_PROTOCOL:-http}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - frontend-net
+      - backend-net
+    labels:
+      caddy: ${SEATICKET_PROTOCOL:-http}://${SEATICKET_HOSTNAME:?Variable is not set or empty}
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:80 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
   seadb:
     image: ${SEADB_IMAGE:-seaticket/seadb:0.1.0-testing}
     restart: unless-stopped
     container_name: seadb
-    # ports:
-    #   - ${SEADB_PORT:-8888}:${SEADB_PORT:-8888}/tcp
     volumes:
-      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
       - ./fdb.cluster:/etc/foundationdb/fdb.cluster:ro
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
       - TZ=${TIME_ZONE}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
@@ -15,7 +138,16 @@ services:
       fdb:
         condition: service_healthy
     networks:
-      - seaticket
+      - backend-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8888 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
 networks:
-  seaticket:
+  frontend-net:
+    name: frontend-net
+  backend-net:
+    name: backend-net

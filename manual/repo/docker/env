@@ -1,8 +1,21 @@
-COMPOSE_FILE='fdb.yml'
+COMPOSE_FILE='seaticket.yml'
 COMPOSE_PATH_SEPARATOR=','
 
 # system settings
 TIME_ZONE='Europe/Berlin'
 
+# seaticket server url
+SEATICKET_HOSTNAME=
+SEATICKET_PROTOCOL='http'
+
 # shared secret for secure communication
 JWT_PRIVATE_KEY=
+
+# database
+MYSQL_PASSWORD=
+
+# init
+INIT_MYSQL_ROOT_PASSWORD=
+
+INIT_ADMIN_EMAIL=me@example.com
+INIT_ADMIN_PASSWORD=asecret

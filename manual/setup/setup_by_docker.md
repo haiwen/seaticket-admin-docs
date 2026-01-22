@@ -9,7 +9,7 @@ In general, we recommend that you have at least 2G RAM and a 2-core CPU (> 2GHz)
 The following assumptions and conventions are used in the rest of this document:
 
 - `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
-- SeaTicket uses two [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) are `/opt/seaticket-mysql` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
+- SeaTicket uses two [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) are `/opt/mysql-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
 - All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.
 
 ### Install docker
@@ -18,21 +18,14 @@ Use the [official installation guide for your OS to install Docker](https://docs
 
 ### Download and modify `.env`
 
-To deploy SeaTicket with Docker, you have to `.env`, `seaticket.yml`  and `caddy.yml` in a directory (e.g., `/opt/seaticket`):
+To deploy SeaTicket with Docker, you have to `.env`, `seaticket.yml`  and `config.yml` in a directory (e.g., `/opt/seaticket`):
 
 ```bash
 mkdir /opt/seaticket
 cd /opt/seaticket
 
 wget -O .env https://manual.seaticket.ai/main/repo/docker/env
-wget https://manual.seaticket.ai/main/repo/docker/fdb.yml
-wget https://manual.seaticket.ai/main/repo/docker/fdb.cluster
-wget https://manual.seaticket.ai/main/repo/docker/caddy.yml
-wget https://manual.seaticket.ai/main/repo/docker/seadb.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaqa-web.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaqa-indexer.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaqa-ai.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaqa-events.yml
+wget https://manual.seaticket.ai/main/repo/docker/seaticket.yml
 wget https://manual.seaticket.ai/main/repo/docker/config.yaml
 
 nano .env
@@ -42,32 +35,24 @@ The following fields merit particular attention:
 
 | Variable                        | Description                                                                                                   | Default Value                   |  
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |  
-| `SEAFILE_VOLUME`                | The volume directory of SeaTicket data                                                                          | `/opt/seaticket-data`             |  
-| `SEAFILE_MYSQL_VOLUME`          | The volume directory of MySQL data                                                                            | `/opt/seaticket-mysql/db`         |  
-| `SEAFILE_CADDY_VOLUME`          | The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's                    | `/opt/seaticket-caddy`            |  
-| `INIT_SEAFILE_MYSQL_ROOT_PASSWORD` | The `root` password of MySQL                                                                                  | (Only required on first deployment) |  
-| `SEAFILE_MYSQL_DB_HOST`         | The host of MySQL | `db`  | 
-| `SEAFILE_MYSQL_DB_PORT`         | The port of MySQL | `3306`  | 
-| `SEAFILE_MYSQL_DB_USER`         | The user of MySQL (`database` - `user` can be found in `conf/seaticket.conf`)                                    | `seaticket`  |  
-| `SEAFILE_MYSQL_DB_PASSWORD`     | The user `seaticket` password of MySQL                                                                          | (required)  |  
-| `SEAFILE_MYSQL_DB_CCNET_DB_NAME`     | The database name of ccnet | `ccnet_db`  |
-| `SEAFILE_MYSQL_DB_SEAFILE_DB_NAME`     | The database name of seaticket | `seaticket_db`  |
-| `SEAFILE_MYSQL_DB_SEAHUB_DB_NAME`     | The database name of seahub | `seahub_db`  |
+| `SEATICKET_VOLUME`                | The volume directory of SeaTicket data                                                                          | `/opt/seaticket-data`             |  
+| `MYSQL_VOLUME`          | The volume directory of MySQL data                                                                            | `/opt/mysql-data`         |  
+| `CADDY_VOLUME`          | The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's                    | `/opt/caddy-data`            |  
+| `INIT_MYSQL_ROOT_PASSWORD` | The `root` password of MySQL                                                                                  | (Only required on first deployment) |  
+| `MYSQL_HOST`         | The host of MySQL | `db`  | 
+| `MYSQL_PORT`         | The port of MySQL | `3306`  | 
+| `MYSQL_USER`         | The user of MySQL |`seaticket`  |  
+| `MYSQL_PASSWORD`     | The user `seaticket` password of MySQL                                                                          | (required)  |  
+| `MYSQL_DB_NAME`     | The database name of seaticket | `seaticket_db`  |
 | `JWT_PRIVATE_KEY`                           | JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for SeaTicket, which can be generated by using `pwgen -s 40 1` | (required) |  
-| `SEAFILE_SERVER_HOSTNAME`       | SeaTicket server hostname or domain                                                                  | (required)  |  
-| `SEAFILE_SERVER_PROTOCOL`       | SeaTicket server protocol (http or https)                                                                       | `http` |
-| `CACHE_PROVIDER`       | The type of cache server used for SeaTicket. The available options are `redis` and `memcached`. Since SeaTicket 13, it is recommended to use `redis` as the cache service to support new features, and `memcached` will no longer be integrated into SeaTicket Docker by default.    | `redis` |
+| `SEATICKET_HOSTNAME`       | SeaTicket hostname or domain                                                                  | (required)  |  
+| `SEATICKET_PROTOCOL`       | SeaTicket protocol (http or https)                                                                       | `http` |
 | `REDIS_HOST`       | Redis server host | `redis` |
 | `REDIS_PORT`       | Redis server port | `6379` |
-| `REDIS_PASSWORD`       | Redis server password | (none) |
-| `MEMCACHED_HOST`       | Memcached server host | `memcached` |
-| `MEMCACHED_PORT`       | Memcached server port | `11211` |
+| `REDIS_PASSWORD`       | Redis server password | (required) |
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
-| `ENABLE_NOTIFICATION_SERVER`   | Enable (`true`) or disable (`false`) notification feature for SeaTicket | `false` |  
-| `NOTIFICATION_SERVER_URL`   | The [notification server](../extension/notification-server.md) url | (none) |
-| `MD_FILE_COUNT_LIMIT` | (only valid when deployed [metadata server](../extension/metadata-server.md)). The maximum number of files in a repository that the metadata feature allows. If the number of files in a repository exceeds this value, the metadata management function will not be enabled for the repository. For a repository with metadata management enabled, if the number of records in it reaches this value but there are still some files that are not recorded in metadata server, the metadata management of the unrecorded files will be skipped. | `100000` |  
-| `INIT_SEAFILE_ADMIN_EMAIL`      | Admin username                                                                                                | `me@example.com` (Recommend modifications) |  
-| `INIT_SEAFILE_ADMIN_PASSWORD`   | Admin password       | `asecret` (Recommend modifications) |
+| `INIT_SEATICKET_ADMIN_EMAIL`      | Admin username                                                                                                | `me@example.com` (Recommend modifications) |  
+| `INIT_SEATICKET_ADMIN_PASSWORD`   | Admin password       | `asecret` (Recommend modifications) |
 | `NON_ROOT`   | Run SeaTicket container without a root user      | `false` |
 
 ### Start SeaTicket server
@@ -88,77 +73,22 @@ docker compose up -d
     docker compose --env-file /path/to/.env up -d
     ```
 
-!!! success
-    After starting the services, you can see the initialization progress by tracing the logs of container `seaticket` (i.e., `docker logs seaticket -f`)
+### Init FoundationDB
 
-    ```
-    ---------------------------------
-    This is your configuration
-    ---------------------------------
+You need to initialize the foundation data. Please run the following command:
 
-        server name:            seaticket
-        server ip/domain:       seaticket.example.com
+```bash
+docker exec -it fdb bash
 
-        seaticket data dir:       /opt/seaticket/seaticket-data
-        fileserver port:        8082
+fdbcli
 
-        database:               create new
-        ccnet database:         ccnet_db
-        seaticket database:       seaticket_db
-        seahub database:        seahub_db
-        database user:          seaticket
+# wait for a while, then input the following commands
+configure new single ssd
+configure storage_migration_type=aggressive
+configure ssd
+```
 
-
-    Generating seaticket configuration ...
-
-    done
-    Generating seahub configuration ...
-
-    ----------------------------------------
-    Now creating seafevents database tables ...
-
-    ----------------------------------------
-    ----------------------------------------
-    Now creating ccnet database tables ...
-
-    ----------------------------------------
-    ----------------------------------------
-    Now creating seaticket database tables ...
-
-    ----------------------------------------
-    ----------------------------------------
-    Now creating seahub database tables ...
-
-    ----------------------------------------
-
-    creating seaticket-server-latest symbolic link ...  done
-
-    -----------------------------------------------------------------
-    Your seaticket server configuration has been finished successfully.
-    -----------------------------------------------------------------
-
-    ``` 
-    
-    And then you can see the following messages which the SeaTicket server starts successfully:
-
-    ```
-    Starting seaticket server, please wait ...
-    SeaTicket server started
-
-    Done.
-
-    Starting seahub at port 8000 ...
-
-    ----------------------------------------
-    Successfully created seaticket admin
-    ----------------------------------------
-
-    Seahub is started
-
-    Done.
-    ```
-
-    Finially, you can go to `http://seaticket.example.com` to use SeaTicket.
+Finially, you can go to `http://seaticket.example.com` to use SeaTicket.
 
 ## SeaTicket directory structure
 
@@ -166,10 +96,8 @@ docker compose up -d
 
 Placeholder spot for shared volumes. You may elect to store certain persistent information outside of a container, in our case we keep various log files and upload directory outside. This allows you to rebuild containers easily without losing important information.
 
-* /opt/seaticket-data/seaticket: This is the directory for seaticket server configuration and data.
-    * /opt/seaticket-data/seaticket/logs: This is the directory that would contain the log files of seaticket server processes. For example, you can find seaf-server logs in `/opt/seaticket-data/seaticket/logs/seaticket.log`.
-* /opt/seaticket-data/logs: This is the directory for operating system.
-    * /opt/seaticket-data/logs/var-log: This is the directory that would be mounted as `/var/log` inside the container. `/opt/seaticket-data/logs/var-log/nginx` contains the logs of Nginx in the SeaTicket container.
+* /opt/seaticket-data: This is the directory for seaticket server configuration and data.
+    * /opt/seaticket-data/logs: This is the directory that would contain the log files of seaticket server processes. For example, you can find seaf-server logs in `/opt/seaticket-data/seaticket/logs/seaticket.log`.
 
 ### Find logs
 
@@ -182,14 +110,12 @@ docker compose logs --follow
 docker compose --env-file /path/to/.env logs --follow
 
 # you can also specify container name:
-docker compose logs seaticket --follow
+docker compose logs seaqa-web --follow
 # or, if the `.env` file is elsewhere:
-docker compose --env-file /path/to/.env logs seaticket --follow
+docker compose --env-file /path/to/.env logs seaqa-web --follow
 ```
 
-The SeaTicket logs are under `/shared/logs/seaticket` in the docker, or `/opt/seaticket-data/logs/seaticket` in the server that run the docker.
-
-The system logs are under `/shared/logs/var-log`, or `/opt/seaticket-data/logs/var-log` in the server that run the docker.
+The SeaTicket logs are under `/shared/logs` in the docker, or `/opt/seaticket-data/logs/seaticket` in the server that run the docker.
 
 To monitor all SeaTicket logs simultaneously (from outside of the container), run
 
@@ -206,7 +132,7 @@ config.yaml
 Ensure the container is running, then enter this command:
 
 ```bash
-docker exec -it seaticket /opt/seaticket/seaticket-server-latest/reset-admin.sh
+docker exec -it seaqa-web /scripts/reset-admin.sh
 ```
 
 Enter the username and password according to the prompts. You now have a new admin account.
@@ -225,7 +151,7 @@ Q: If I want enter into the Docker container, which command I can use?
 A: You can enter into the docker container using the command:
 
 ```bash
-docker exec -it seaticket /bin/bash
+docker exec -it seaqa-web /bin/bash
 ```
 
 
@@ -234,7 +160,7 @@ Q: I forgot the SeaTicket admin email address/password, how do I create a new ad
 A: You can create a new admin account by running
 
 ```shell
-docker exec -it seaticket /opt/seaticket/seaticket-server-latest/reset-admin.sh
+docker exec -it seaqa-web /scripts/reset-admin.sh
 ```
 
 The SeaTicket service must be up when running the superuser command.
@@ -242,7 +168,7 @@ The SeaTicket service must be up when running the superuser command.
 
 Q: If, for whatever reason, the installation fails, how do I to start from a clean slate again?
 
-A: Remove the directories /opt/seaticket, /opt/seaticket-data and /opt/seaticket-mysql and start again.
+A: Remove the directories /opt/seaticket, /opt/seaticket-data and /opt/mysql-data and start again.
 
 
 Q: Something goes wrong during the start of the containers. How can I find out more?

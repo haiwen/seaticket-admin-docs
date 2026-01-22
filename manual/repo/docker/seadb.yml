@@ -1,0 +1,26 @@
+services:
+  seadb:
+    image: ${SEADB_IMAGE:-seaticket/seadb:0.1.0-testing}
+    restart: unless-stopped
+    container_name: seadb
+    volumes:
+      - ./fdb.cluster:/etc/foundationdb/fdb.cluster:ro
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
+    environment:
+      - TZ=${TIME_ZONE}
+      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
+    depends_on:
+      fdb:
+        condition: service_healthy
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8888 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  backend-net:
+    name: backend-net
