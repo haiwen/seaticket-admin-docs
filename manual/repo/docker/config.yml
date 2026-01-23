@@ -1,0 +1,7 @@
+global:
+  SEADB_INNER_SERVER_URL: http://seadb:8888
+  SEAQA_AI_INNER_SERVER_URL: http://seaqa-ai:8887
+  SEAQA_INDEXER_INNER_SERVER_URL: http://seaqa-indexer:8888
+
+seaqa-web:
+  SEAQA_EVENTS_INNER_SERVER_URL: http://seaqa-events:6001
