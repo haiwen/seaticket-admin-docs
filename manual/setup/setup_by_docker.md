@@ -53,7 +53,6 @@ The following fields merit particular attention:
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
 | `INIT_SEATICKET_ADMIN_EMAIL`      | Admin username                                                                                                | `me@example.com` (Recommend modifications) |  
 | `INIT_SEATICKET_ADMIN_PASSWORD`   | Admin password       | `asecret` (Recommend modifications) |
-| `NON_ROOT`   | Run SeaTicket container without a root user      | `false` |
 
 ### Start SeaTicket server
 
