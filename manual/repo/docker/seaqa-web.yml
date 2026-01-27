@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     container_name: seaqa-web
     volumes:
-      - ./config.yml:/opt/seaticket/conf/config.yml
+      - ./config.yml:/opt/seaticket/conf/config.yml:ro
       - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
       - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
