@@ -11,7 +11,7 @@ services:
       - "${CADDY_VOLUME:-/opt/caddy-data}:/data/caddy"
     environment:
       - CADDY_INGRESS_NETWORKS=frontend-net
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
     networks:
       - frontend-net
     healthcheck:
@@ -50,7 +50,7 @@ services:
       - MARIADB_MYSQL_LOCALHOST_USER=1
       - MARIADB_MYSQL_LOCALHOST_GRANTS=USAGE
       - MARIADB_AUTO_UPGRADE=1
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
     volumes:
       - "${MYSQL_VOLUME:-/opt/mysql-data}:/var/lib/mysql"
     networks:
@@ -75,7 +75,7 @@ services:
     container_name: redis
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD:-}
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
     networks:
       - backend-net
     healthcheck:
@@ -104,9 +104,13 @@ services:
       - REDIS_PORT=${REDIS_PORT:-6379}
       - REDIS_PASSWORD=${REDIS_PASSWORD:-}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE}
-      - SEATICKET_HOSTNAME=${SEATICKET_HOSTNAME:?Variable is not set or empty}
-      - SEATICKET_PROTOCOL=${SEATICKET_PROTOCOL:-http}
+      - TZ=${TIME_ZONE:-}
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - S3_HOST=${S3_HOST:-}
+      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
+      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
+      - S3_KEY_ID=${S3_KEY_ID:-}
+      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
     depends_on:
       mysql:
         condition: service_healthy
@@ -134,7 +138,8 @@ services:
       - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
     depends_on:
       fdb:
         condition: service_healthy
@@ -164,7 +169,8 @@ services:
       - REDIS_PORT=${REDIS_PORT:-6379}
       - REDIS_PASSWORD=${REDIS_PASSWORD:-}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
     depends_on:
       mysql:
         condition: service_healthy
@@ -190,7 +196,13 @@ services:
       - REDIS_PORT=${REDIS_PORT:-6379}
       - REDIS_PASSWORD=${REDIS_PASSWORD:-}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - S3_HOST=${S3_HOST:-}
+      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
+      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
+      - S3_KEY_ID=${S3_KEY_ID:-}
+      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
     depends_on:
       mysql:
         condition: service_healthy
@@ -220,7 +232,13 @@ services:
       - REDIS_PORT=${REDIS_PORT:-6379}
       - REDIS_PASSWORD=${REDIS_PASSWORD:-}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE}
+      - TZ=${TIME_ZONE:-}
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - S3_HOST=${S3_HOST:-}
+      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
+      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
+      - S3_KEY_ID=${S3_KEY_ID:-}
+      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
     depends_on:
       mysql:
         condition: service_healthy

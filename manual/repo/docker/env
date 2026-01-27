@@ -2,11 +2,11 @@ COMPOSE_FILE='seaticket.yml'
 COMPOSE_PATH_SEPARATOR=','
 
 # system settings
-TIME_ZONE='Europe/Berlin'
+TIME_ZONE=Europe/Berlin
 
 # seaticket server url
 SEATICKET_HOSTNAME=
-SEATICKET_PROTOCOL='http'
+SEATICKET_PROTOCOL=http
 
 # shared secret for secure communication
 JWT_PRIVATE_KEY=
