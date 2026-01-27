@@ -84,62 +84,17 @@ services:
       retries: 3
       timeout: 5s
 
-  seaqa-web:
-    image: ${SEAQA_WEB_IMAGE:-seaticket/seaqa-web:0.1.0-testing}
-    restart: unless-stopped
-    container_name: seaqa-web
-    volumes:
-      - ./config.yml:/opt/seaticket/conf/config.yml:ro
-      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
-    environment:
-      - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
-      - SEAQA_MYSQL_DB_PORT=${MYSQL_PORT:-3306}
-      - SEAQA_MYSQL_DB_USER=${MYSQL_USER:-seaticket}
-      - SEAQA_MYSQL_DB_PASSWORD=${MYSQL_PASSWORD:?Variable is not set or empty}
-      - SEAQA_MYSQL_SEAQA_DB_NAME=${MYSQL_DB_NAME:-seaticket_db}
-      - INIT_SEAQA_MYSQL_ROOT_PASSWORD=${INIT_MYSQL_ROOT_PASSWORD:-}
-      - INIT_ADMIN_EMAIL=${INIT_ADMIN_EMAIL:-}
-      - INIT_ADMIN_PASSWORD=${INIT_ADMIN_PASSWORD:-}
-      - REDIS_HOST=${REDIS_HOST:-redis}
-      - REDIS_PORT=${REDIS_PORT:-6379}
-      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
-      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE:-}
-      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
-      - S3_HOST=${S3_HOST:-}
-      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
-      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
-      - S3_KEY_ID=${S3_KEY_ID:-}
-      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
-    depends_on:
-      mysql:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    networks:
-      - frontend-net
-      - backend-net
-    labels:
-      caddy: ${SEATICKET_PROTOCOL:-http}://${SEATICKET_HOSTNAME:?Variable is not set or empty}
-      caddy.reverse_proxy: "{{upstreams 80}}"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://127.0.0.1:80 || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
-
   seadb:
     image: ${SEADB_IMAGE:-seaticket/seadb:0.1.0-testing}
     restart: unless-stopped
     container_name: seadb
     volumes:
       - ./fdb.cluster:/etc/foundationdb/fdb.cluster:ro
+      - ./config.yml:/opt/seaticket/conf/config.yml:ro
       - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
-      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE:-}
       - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - TZ=${TIME_ZONE:-}
     depends_on:
       fdb:
         condition: service_healthy
@@ -147,6 +102,30 @@ services:
       - backend-net
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://127.0.0.1:8888 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  seaqa-ai:
+    image: ${SEAQA_AI_IMAGE:-seaticket/seaqa-ai:0.1.0-testing}
+    restart: unless-stopped
+    container_name: seaqa-ai
+    volumes:
+      - ./config.yml:/opt/seaticket/conf/config.yml:ro
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
+    environment:
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - TZ=${TIME_ZONE:-}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8887 || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -160,17 +139,8 @@ services:
       - ./config.yml:/opt/seaticket/conf/config.yml:ro
       - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
-      - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
-      - SEAQA_MYSQL_DB_PORT=${MYSQL_PORT:-3306}
-      - SEAQA_MYSQL_DB_USER=${MYSQL_USER:-seaticket}
-      - SEAQA_MYSQL_DB_PASSWORD=${MYSQL_PASSWORD:?Variable is not set or empty}
-      - SEAQA_MYSQL_SEAQA_DB_NAME=${MYSQL_DB_NAME:-seaticket_db}
-      - REDIS_HOST=${REDIS_HOST:-redis}
-      - REDIS_PORT=${REDIS_PORT:-6379}
-      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
-      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE:-}
       - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - TZ=${TIME_ZONE:-}
     depends_on:
       mysql:
         condition: service_healthy
@@ -178,42 +148,6 @@ services:
         condition: service_healthy
     networks:
       - backend-net
-
-  seaqa-ai:
-    image: ${SEAQA_AI_IMAGE:-seaticket/seaqa-ai:0.1.0-testing}
-    restart: unless-stopped
-    container_name: seaqa-ai
-    volumes:
-      - ./config.yml:/opt/seaticket/conf/config.yml:ro
-      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
-    environment:
-      - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
-      - SEAQA_MYSQL_DB_PORT=${MYSQL_PORT:-3306}
-      - SEAQA_MYSQL_DB_USER=${MYSQL_USER:-seaticket}
-      - SEAQA_MYSQL_DB_PASSWORD=${MYSQL_PASSWORD:?Variable is not set or empty}
-      - SEAQA_MYSQL_SEAQA_DB_NAME=${MYSQL_DB_NAME:-seaticket_db}
-      - REDIS_HOST=${REDIS_HOST:-redis}
-      - REDIS_PORT=${REDIS_PORT:-6379}
-      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
-      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE:-}
-      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
-      - S3_HOST=${S3_HOST:-}
-      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
-      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
-      - S3_KEY_ID=${S3_KEY_ID:-}
-      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - backend-net
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8887 || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
 
   seaqa-indexer:
     image: ${SEAQA_INDEXER_IMAGE:-seaticket/seaqa-indexer:0.1.0-testing}
@@ -223,29 +157,45 @@ services:
       - ./config.yml:/opt/seaticket/conf/config.yml:ro
       - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
     environment:
-      - SEAQA_MYSQL_DB_HOST=${MYSQL_HOST:-mysql}
-      - SEAQA_MYSQL_DB_PORT=${MYSQL_PORT:-3306}
-      - SEAQA_MYSQL_DB_USER=${MYSQL_USER:-seaticket}
-      - SEAQA_MYSQL_DB_PASSWORD=${MYSQL_PASSWORD:?Variable is not set or empty}
-      - SEAQA_MYSQL_SEAQA_DB_NAME=${MYSQL_DB_NAME:-seaticket_db}
-      - REDIS_HOST=${REDIS_HOST:-redis}
-      - REDIS_PORT=${REDIS_PORT:-6379}
-      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
-      - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY:?Variable is not set or empty}
-      - TZ=${TIME_ZONE:-}
       - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
-      - S3_HOST=${S3_HOST:-}
-      - S3_FILE_BUCKET=${S3_FILE_BUCKET:-}
-      - S3_WEB_CRAWL_BUCKET=${S3_WEB_CRAWL_BUCKET:-}
-      - S3_KEY_ID=${S3_KEY_ID:-}
-      - S3_SECRET_KEY=${S3_SECRET_KEY:-}
+      - TZ=${TIME_ZONE:-}
     depends_on:
       mysql:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     networks:
       - backend-net
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://127.0.0.1:8888 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  seaqa-web:
+    image: ${SEAQA_WEB_IMAGE:-seaticket/seaqa-web:0.1.0-testing}
+    restart: unless-stopped
+    container_name: seaqa-web
+    volumes:
+      - ./config.yml:/opt/seaticket/conf/config.yml:ro
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
+    environment:
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - TZ=${TIME_ZONE:-}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - frontend-net
+      - backend-net
+    labels:
+      caddy: ${SEATICKET_PROTOCOL:-http}://${SEATICKET_HOSTNAME:?Variable is not set or empty}
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:80 || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
