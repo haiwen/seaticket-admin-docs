@@ -1,14 +1,11 @@
 global:
-  INIT_MYSQL_ROOT_PASSWORD: 
-  INIT_ADMIN_EMAIL: 
-  INIT_ADMIN_PASSWORD: 
   JWT_PRIVATE_KEY: 
-  MYSQL_PASSWORD: 
-  MYSQL_HOST: mysql
-  MYSQL_PORT: 3306
-  MYSQL_USER: seaticket
-  MYSQL_DB: seaticket_db
-  REDIS_HOST: redis
+  SEAQA_MYSQL_DB_HOST: 192.168.0.12
+  SEAQA_MYSQL_DB_PORT: 3306
+  SEAQA_MYSQL_DB_USER: seaticket
+  SEAQA_MYSQL_DB_PASSWORD: 
+  SEAQA_MYSQL_SEAQA_DB_NAME: seaticket_db
+  REDIS_HOST: 192.168.0.13
   REDIS_PORT: 6379
   REDIS_PASSWORD:
   S3_HOST: 
@@ -16,6 +13,17 @@ global:
   S3_WEB_CRAWL_BUCKET: 
   S3_KEY_ID: 
   S3_SECRET_KEY: 
-  SEADB_INNER_SERVER_URL: http://seadb:8888
-  SEAQA_AI_INNER_SERVER_URL: http://seaqa-ai:8887
-  SEAQA_INDEXER_INNER_SERVER_URL: http://seaqa-indexer:8888
+  SEADB_INNER_SERVER_URL: http://192.168.0.21:8888
+  SEAQA_AI_INNER_SERVER_URL: http://192.168.0.22:8887
+  SEAQA_INDEXER_INNER_SERVER_URL: http://192.168.0.23:8888
+  LLM_MODELS:
+    - type: 
+      key: 
+      model: 
+      label: 
+seaqa-ai:
+  EMBEDDING_MODEL:
+    type: 
+    url: 
+    key: 
+    model: 

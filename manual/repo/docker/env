@@ -1,8 +1,8 @@
-COMPOSE_FILE='seaticket.yml'
+COMPOSE_FILE='caddy.yml,seaqa-web.yml'
 COMPOSE_PATH_SEPARATOR=','
 
 # system settings
-TIME_ZONE=Europe/Berlin
+TIME_ZONE=UTC
 
 # seaticket server url
 SEATICKET_HOSTNAME=

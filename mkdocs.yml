@@ -7,7 +7,7 @@ repo_name: haiwen/seaticket-admin-docs
 repo_url: https://github.com/haiwen/seaticket-admin-docs/
 edit_uri: blob/main/manual
 
-copyright: Copyright &copy; 2026 Seafile Ltd.
+copyright: Copyright &copy; 2026 SeaCloud Labs.
 
 theme:
   name: material
