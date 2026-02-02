@@ -138,8 +138,8 @@ The following fields merit particular attention:
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |  
 | `SEATICKET_VOLUME`                | The volume directory of SeaTicket data                                                                          | `/opt/seaticket-data`             |  
 | `CADDY_VOLUME`          | The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's                    | `/opt/caddy-data`            |  
-| `SEATICKET_HOSTNAME`       | SeaTicket hostname or domain                                                                  | (required)  |  
-| `SEATICKET_PROTOCOL`       | SeaTicket protocol (http or https)                                                                       | `http` |
+| `SEATICKET_SERVER_HOSTNAME`       | SeaTicket server hostname or domain                                                                  | (required)  |  
+| `SEATICKET_SERVER_PROTOCOL`       | SeaTicket server protocol (http or https)                                                                       | `http` |
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
 
 And modify `config.yml`:

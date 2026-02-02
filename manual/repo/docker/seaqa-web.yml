@@ -15,7 +15,7 @@ services:
       - frontend-net
       - backend-net
     labels:
-      caddy: ${SEATICKET_PROTOCOL:-http}://${SEATICKET_HOSTNAME:?Variable is not set or empty}
+      caddy: ${SEATICKET_SERVER_PROTOCOL:-http}://${SEATICKET_SERVER_HOSTNAME:?Variable is not set or empty}
       caddy.reverse_proxy: "{{upstreams 80}}"
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://127.0.0.1:80 || exit 1"]
