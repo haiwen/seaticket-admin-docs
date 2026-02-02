@@ -6,7 +6,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./fdb.cluster:/etc/foundationdb/fdb.cluster:ro
+      - ./fdb.cluster:/etc/foundationdb/fdb.cluster
       - ${SEADB_VOLUME:-/opt/seadb-data}:/shared
     environment:
       - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}

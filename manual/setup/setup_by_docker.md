@@ -9,7 +9,7 @@ In general, we recommend that you have at least 2G RAM and a 2-core CPU (> 2GHz)
 The following assumptions and conventions are used in the rest of this document:
 
 - `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
-- SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/mysql-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
+- SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/caddy-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
 - All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.
 - SeaTicket contains some components that we recommend you deploy using different machines.
   - SeaDB and FoundationDB
@@ -28,18 +28,19 @@ Use the [official installation guide for your OS to install Docker](https://docs
 
 SeaTicket depends on SeaDB, you need to deploy SeaDB first. It is recommended that you deploy SeaTicket and SeaDB separately using different machines.
 
-FoundationDB can be deployed on the host or can be deployed using docker. SeaDB connects to FoundationDB through the configuration in fdb.cluster, and when the environment of the fdb cluster changes, the configuration in fdb.cluster also changes. So it is recommended that you deploy on the same machine so that SeaDB can read fdb.cluster conveniently.
+### Deploy FoundationDB
+
+Please refer to the [official documentation](https://apple.github.io/foundationdb/getting-started-mac.html) to deploy FoundationDB.
 
 ### Download and modify `.env`
 
-To deploy SeaDB with Docker, you have to `.env`, `fdb.yml`, `seadb.yml` and `fdb.cluster` in a directory (e.g., `/opt/seadb`):
+To deploy SeaDB with Docker, you have to `.env`, `seadb.yml` and `fdb.cluster` in a directory (e.g., `/opt/seadb`):
 
 ```bash
 mkdir /opt/seadb
 cd /opt/seadb
 
 wget -O .env https://manual.seaticket.ai/main/repo/docker/env-seadb
-wget https://manual.seaticket.ai/main/repo/docker/fdb.yml
 wget https://manual.seaticket.ai/main/repo/docker/seadb.yml
 wget https://manual.seaticket.ai/main/repo/docker/fdb.cluster
 
@@ -55,34 +56,15 @@ The following fields merit particular attention:
 | `FDB_VOLUME`          | The volume directory of FoundationDB data                                                                            | `/opt/fdb-data`         |  
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
 
-### Init FoundationDB
-
-Before starting SeaDB, you need to init FoundationDB.
-
-Run the following command:
+Modify `fdb.cluster`, the content should copy from the `/etc/foundationdb/fdb.cluster` file in the FoundationDB node:
 
 ```bash
-docker compose up -d
-
-docker exec -it fdb bash
-
-fdbcli
-
-# wait for a while, then input the following commands
-configure new single ssd
-configure storage_migration_type=aggressive
-configure ssd
+vim fdb.cluster
 ```
 
 ### Start SeaDB
 
-Add `seadb.yml` for `COMPOSE_FILE` in `.env` file:
-
-```env
-COMPOSE_FILE='fdb.yml,seadb.yml'
-```
-
-Then run the following command:
+Run the following command:
 
 ```bash
 docker compose up -d
@@ -98,12 +80,42 @@ seadb | seadb started
 
 ## Deploy SeaTicket
 
-SeaTicket depends on MySQL and Redis. MySQL and Redis can be deployed on the host or can be deployed using docker.
+SeaTicket depends on MySQL and Redis.
 
+### Deploy Redis
+
+Please refer to [Deploy Redis](https://redis.io/docs/latest/get-started/) for more details.
+
+### Deploy MySQL
+
+Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installing.html) for more details.
+
+Before starting SeaTicket, you need to create MySQL user `seaticket` and create the database `seaticket_db`.
+
+Copy `mysql.sql` file to the host `/tmp` directory:
+
+```bash
+docker run --rm -v /tmp:/shared seaticket/seaqa-web:1.0-latest cp /opt/seaticket/seaqa-web/sql/mysql.sql /shared
+```
+
+Create the MySQL user `seaticket` and create the database `seaticket_db`:
+
+```bash
+mysql -u root -p
+
+# then input the following commands
+CREATE DATABASE seaticket_db CHARACTER SET utf8mb4;
+CREATE USER seaticket@'%' IDENTIFIED BY <SEAQA_MYSQL_DB_PASSWORD>;
+GRANT ALL PRIVILEGES ON seaticket_db.* TO 'seaticket'@'%';
+FLUSH PRIVILEGES;
+
+USE seaticket_db;
+SOURCE /tmp/mysql.sql;
+```
 
 ### Download and modify `.env`
 
-To deploy SeaTicket with Docker, you have to `.env`, `mysql.yml`, `redis.yml`, `caddy.yml`, `seaqa-web.yml`, `seaqa-indexer.yml`, `seaqa-ai.yml`, `seaqa-events.yml`, and `config.yml` in a directory (e.g., `/opt/seaticket`):
+To deploy SeaTicket with Docker, you have to `.env`, `caddy.yml`, `seaqa-web.yml`, `seaqa-indexer.yml`, `seaqa-ai.yml`, `seaqa-events.yml`, and `config.yml` in a directory (e.g., `/opt/seaticket`):
 
 ```bash
 mkdir /opt/seaticket
@@ -111,8 +123,6 @@ cd /opt/seaticket
 
 wget -O .env https://manual.seaticket.ai/main/repo/docker/env
 wget https://manual.seaticket.ai/main/repo/docker/config.yml
-wget https://manual.seaticket.ai/main/repo/docker/mysql.yml
-wget https://manual.seaticket.ai/main/repo/docker/redis.yml
 wget https://manual.seaticket.ai/main/repo/docker/caddy.yml
 wget https://manual.seaticket.ai/main/repo/docker/seaqa-web.yml
 wget https://manual.seaticket.ai/main/repo/docker/seaqa-indexer.yml
@@ -127,12 +137,10 @@ The following fields merit particular attention:
 | Variable                        | Description                                                                                                   | Default Value                   |  
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |  
 | `SEATICKET_VOLUME`                | The volume directory of SeaTicket data                                                                          | `/opt/seaticket-data`             |  
-| `MYSQL_VOLUME`          | The volume directory of MySQL data                                                                            | `/opt/mysql-data`         |  
 | `CADDY_VOLUME`          | The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's                    | `/opt/caddy-data`            |  
 | `SEATICKET_HOSTNAME`       | SeaTicket hostname or domain                                                                  | (required)  |  
 | `SEATICKET_PROTOCOL`       | SeaTicket protocol (http or https)                                                                       | `http` |
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
-| `INIT_MYSQL_ROOT_PASSWORD` | The `root` password of MySQL                                                                                  | (Only required on first deployment) |  
 
 And modify `config.yml`:
 
@@ -151,47 +159,6 @@ The following fields merit particular attention:
 | `REDIS_HOST`       | Redis server host | `redis` |
 | `REDIS_PORT`       | Redis server port | `6379` |
 | `REDIS_PASSWORD`       | Redis server password | (required) |
-
-### Init MySQL
-
-Before starting SeaTicket, you need to init MySQL and create the database `seaticket_db`.
-
-Modify `COMPOSE_FILE` in `.env` file:
-
-```env
-COMPOSE_FILE='mysql.yml'
-```
-
-Run the following command:
-
-```bash
-docker compose up -d
-```
-
-Copy mysql.sql file to the mysql-data directory:
-
-```bash
-docker run --rm -v /opt/mysql-data:/shared seaticket/seaqa-web:1.0-latest cp /opt/seaticket/seaqa-web/sql/mysql.sql /shared
-```
-
-Create the database `seaticket_db` in MySQL:
-
-```bash
-docker exec -it mysql bash
-
-mysql -u root -p
-
-# then input the following commands
-CREATE DATABASE seaticket_db CHARACTER SET utf8mb4;
-CREATE USER seaticket@'%' IDENTIFIED BY <SEAQA_MYSQL_DB_PASSWORD>;
-GRANT ALL PRIVILEGES ON seaticket_db.* TO 'seaticket'@'%';
-FLUSH PRIVILEGES;
-
-USE seaticket_db;
-SOURCE /var/lib/mysql/mysql.sql;
-```
-
-You can remove `INIT_MYSQL_ROOT_PASSWORD` in `.env` file after init MySQL.
 
 ### Start SeaTicket server
 
