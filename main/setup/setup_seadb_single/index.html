@@ -10,13 +10,13 @@
         <meta name="author" content="seaticket">
       
       
-        <link rel="canonical" href="https://manual.seaticket.ai/main/configuration/environment_variables/">
+        <link rel="canonical" href="https://manual.seaticket.ai/main/setup/setup_seadb_single/">
       
       
-        <link rel="prev" href="../../setup/setup_by_docker/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../../administration/overview/">
+        <link rel="next" href="../setup_by_docker/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Environment Variables - SeaTicket Admin Manual</title>
+        <title>SeaDB single node - SeaTicket Admin Manual</title>
       
     
     
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#setup-seadb-in-single-node" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Environment Variables
+              SeaDB single node
             
           </span>
         </div>
@@ -247,11 +252,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../setup/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -267,13 +274,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../configuration/environment_variables/" class="md-tabs__link">
           
   
   
@@ -380,26 +385,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -417,7 +427,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -435,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -460,26 +470,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -497,7 +512,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -512,10 +527,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../setup/setup_seadb_single/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeaDB single node
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -531,6 +573,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-foundationdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy FoundationDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-seadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy SeaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy SeaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-and-modify-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download and modify .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-seadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start SeaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -543,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -579,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/setup_by_docker/" class="md-nav__link">
+      <a href="../setup_by_docker/" class="md-nav__link">
         
   
   
@@ -611,31 +723,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -653,7 +760,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -668,17 +775,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../configuration/environment_variables/" class="md-nav__link">
         
   
   
@@ -694,7 +794,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -867,6 +966,66 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-foundationdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy FoundationDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-seadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy SeaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy SeaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-and-modify-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download and modify .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-seadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start SeaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -886,9 +1045,67 @@
   
 
 
-  <h1>Environment Variables</h1>
+<h1 id="setup-seadb-in-single-node">Setup SeaDB in single node<a class="headerlink" href="#setup-seadb-in-single-node" title="Permanent link">&para;</a></h1>
+<p>SeaDB depends on <a href="https://apple.github.io/foundationdb/">FoundationDB</a>. </p>
+<p>FoundationDB is a distributed database designed to handle large volumes of structured data across clusters of commodity servers.</p>
+<h2 id="deploy-foundationdb">Deploy FoundationDB<a class="headerlink" href="#deploy-foundationdb" title="Permanent link">&para;</a></h2>
+<p>Please refer to the <a href="https://apple.github.io/foundationdb/getting-started-mac.html">official documentation</a> to deploy FoundationDB.</p>
+<h2 id="deploy-seadb">Deploy SeaDB<a class="headerlink" href="#deploy-seadb" title="Permanent link">&para;</a></h2>
+<h3 id="download-and-modify-env">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env" title="Permanent link">&para;</a></h3>
+<p>To deploy SeaDB with Docker, you have to <code>.env</code>, <code>seadb.yml</code> and <code>fdb.cluster</code> in a directory (e.g., <code>/opt/seadb</code>):</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seadb
+<span class="nb">cd</span><span class="w"> </span>/opt/seadb
 
+wget<span class="w"> </span>-O<span class="w"> </span>.env<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/env-seadb
+wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seadb.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/fdb.cluster
 
+vim<span class="w"> </span>.env
+</code></pre></div>
+<p>The following fields merit particular attention:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_PRIVATE_KEY</code></td>
+<td>JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for SeaTicket, which can be generated by using <code>pwgen -s 40 1</code></td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>SEADB_VOLUME</code></td>
+<td>The volume directory of SeaDB data</td>
+<td><code>/opt/seadb-data</code></td>
+</tr>
+<tr>
+<td><code>FDB_VOLUME</code></td>
+<td>The volume directory of FoundationDB data</td>
+<td><code>/opt/fdb-data</code></td>
+</tr>
+<tr>
+<td><code>TIME_ZONE</code></td>
+<td>Time zone</td>
+<td><code>UTC</code></td>
+</tr>
+</tbody>
+</table>
+<p>Modify <code>fdb.cluster</code>, the content should copy from the <code>/etc/foundationdb/fdb.cluster</code> file in the FoundationDB node:</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>fdb.cluster
+</code></pre></div>
+<h3 id="start-seadb">Start SeaDB<a class="headerlink" href="#start-seadb" title="Permanent link">&para;</a></h3>
+<p>Run the following command:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>seadb
+</code></pre></div>
+<p>When you see the following log, it means that SeaDB is ready:</p>
+<div class="highlight"><pre><span></span><code>seadb | seadb started
+</code></pre></div>
 
 
 
@@ -924,7 +1141,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../setup/setup_by_docker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup SeaTicket">
+          <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -934,20 +1151,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Setup SeaTicket
+                Overview
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../administration/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../setup_by_docker/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup SeaTicket">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Setup SeaTicket
               </div>
             </div>
             <div class="md-footer__button md-icon">
