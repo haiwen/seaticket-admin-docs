@@ -1311,7 +1311,7 @@ vim<span class="w"> </span>.env
 </table>
 <h3 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h3>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
-<div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;mysql.yml,redis.yml,caddy.yml,seaqa-web.yml&#39;
+<div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;caddy.yml,seaqa-web.yml&#39;
 </code></pre></div>
 <p>Start SeaTicket server with the following command</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
