@@ -105,7 +105,7 @@ The following fields merit particular attention:
 | `REDIS_HOST`       | Redis server host | `redis` |
 | `REDIS_PORT`       | Redis server port | `6379` |
 | `REDIS_PASSWORD`       | Redis server password | (required) |
-| `S3_HOST`       | Host of your buckets (required when not use AWS). | |
+| `S3_HOST`       | Host of your buckets | (required when not use AWS) |
 | `S3_FILE_BUCKET`       | S3 storage backend file objects bucket | (required) |
 | `S3_WEB_CRAWL_BUCKET`       | S3 storage backend web crawl objects bucket | (required) |
 | `S3_KEY_ID`       | S3 storage backend key ID | (required) |
