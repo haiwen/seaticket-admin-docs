@@ -86,7 +86,5 @@ nav:
   - Introduction: index.md
   - Setup:
     - Overview: setup/overview.md
-    - SeaDB
-      - Setup SeaDB: setup/setup_seadb.md
-    - SeaTicket
-      - Setup SeaTicket: setup/setup_by_docker.md
+    - Setup SeaDB: setup/setup_seadb.md
+    - Setup SeaTicket: setup/setup_by_docker.md
