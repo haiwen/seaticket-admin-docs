@@ -18,8 +18,7 @@ The following assumptions and conventions are used in the rest of this document:
     - seaqa-events
     - seaqa-indexer
 
-
-## Deploy SeaTicket
+## Deploy MySQL, Redis and S3 storage
 
 ### Deploy Redis
 
@@ -28,6 +27,13 @@ Please refer to [Deploy Redis](https://redis.io/docs/latest/get-started/) for mo
 ### Deploy MySQL
 
 Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installing.html) for more details.
+
+### Prepare S3 storage
+
+
+## Deploy SeaTicket
+
+### Preparing seaticket_db
 
 Before starting SeaTicket, you need to create MySQL user `seaticket` and create the database `seaticket_db`.
 
@@ -113,15 +119,6 @@ Start SeaTicket server with the following command
 docker compose up -d
 ```
 
-!!! warning "ERROR: Named volume "xxx" is used in service "xxx" but no declaration was found in the volumes section"
-    You may encounter this problem when your Docker (or docker-compose) version is out of date. You can upgrade or reinstall the Docker service to solve this problem according to the [Docker official documentation](https://docs.docker.com/engine/install/).
-
-!!! note
-    You must run the above command in the directory with the `.env`. If `.env` file is elsewhere, please run
-
-    ```sh
-    docker compose --env-file /path/to/.env up -d
-    ```
 
 ### Create an admin
 
