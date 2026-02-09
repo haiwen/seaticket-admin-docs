@@ -84,5 +84,5 @@ markdown_extensions:
 # Page tree
 nav:
   - Setup:
-    - Single node installation:
+    - Installation:
       - Setup: setup/setup_by_docker.md
