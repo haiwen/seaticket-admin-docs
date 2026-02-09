@@ -197,20 +197,6 @@ To monitor all SeaTicket logs simultaneously (from outside of the container), ru
 sudo tail -f $(find /opt/seaticket/logs/ -type f -name *.log 2>/dev/null)
 ```
 
-## Add a new admin
-
-Ensure the container is running, then enter this command:
-
-```bash
-docker exec -it seaqa-web /scripts/reset-admin.sh
-```
-
-Enter the username and password according to the prompts. You now have a new admin account.
-
-## Backup and recovery
-
-Follow the instructions in [Backup and restore for SeaTicket Docker](../administration/backup_recovery.md)
-
 
 ## FAQ
 
