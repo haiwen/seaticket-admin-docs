@@ -8,15 +8,15 @@ The following assumptions and conventions are used in the rest of this document:
 - `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
 - SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/caddy-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
 - All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.
-- Beside Seadb, SeaTicket server depends on the following third-party services
-  - MySQL
-  - Redis
-  - S3 storage
-- SeaTicket contains following components, each packaged as a separate docker image
-  - Caddy and seaqa-web
-  - seaqa-ai
-  - seaqa-events
-  - seaqa-indexer
+- Beside Seadb, SeaTicket server depends on the following third-party services:
+    - MySQL
+    - Redis
+    - S3 storage
+- SeaTicket contains following components, each packaged as a separate docker image:
+    - Caddy and seaqa-web
+    - seaqa-ai
+    - seaqa-events
+    - seaqa-indexer
 
 
 ## Deploy SeaTicket
