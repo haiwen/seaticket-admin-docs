@@ -720,15 +720,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-seaticket" class="md-nav__link">
+  <a href="#deploy-mysql-redis-and-s3-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy SeaTicket
+        Deploy MySQL, Redis and S3 storage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deploy SeaTicket">
+    <nav class="md-nav" aria-label="Deploy MySQL, Redis and S3 storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -747,6 +747,45 @@
     <span class="md-ellipsis">
       
         Deploy MySQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-s3-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare S3 storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-seaticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy SeaTicket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy SeaTicket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing-seaticket_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing seaticket_db
       
     </span>
   </a>
@@ -1194,15 +1233,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-seaticket" class="md-nav__link">
+  <a href="#deploy-mysql-redis-and-s3-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy SeaTicket
+        Deploy MySQL, Redis and S3 storage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deploy SeaTicket">
+    <nav class="md-nav" aria-label="Deploy MySQL, Redis and S3 storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1221,6 +1260,45 @@
     <span class="md-ellipsis">
       
         Deploy MySQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-s3-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prepare S3 storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-seaticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy SeaTicket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy SeaTicket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing-seaticket_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing seaticket_db
       
     </span>
   </a>
@@ -1417,11 +1495,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-mysql-redis-and-s3-storage">Deploy MySQL, Redis and S3 storage<a class="headerlink" href="#deploy-mysql-redis-and-s3-storage" title="Permanent link">&para;</a></h2>
 <h3 id="deploy-redis">Deploy Redis<a class="headerlink" href="#deploy-redis" title="Permanent link">&para;</a></h3>
 <p>Please refer to <a href="https://redis.io/docs/latest/get-started/">Deploy Redis</a> for more details.</p>
 <h3 id="deploy-mysql">Deploy MySQL<a class="headerlink" href="#deploy-mysql" title="Permanent link">&para;</a></h3>
 <p>Please refer to <a href="https://dev.mysql.com/doc/refman/8.4/en/installing.html">Deploy MySQL</a> for more details.</p>
+<h3 id="prepare-s3-storage">Prepare S3 storage<a class="headerlink" href="#prepare-s3-storage" title="Permanent link">&para;</a></h3>
+<h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
+<h3 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h3>
 <p>Before starting SeaTicket, you need to create MySQL user <code>seaticket</code> and create the database <code>seaticket_db</code>.</p>
 <p>Copy <code>mysql.sql</code> file to the host <code>/tmp</code> directory:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/tmp:/shared<span class="w"> </span>seaticket/seaqa-web:1.0-latest<span class="w"> </span>cp<span class="w"> </span>/opt/seaticket/seaqa-web/sql/mysql.sql<span class="w"> </span>/shared
@@ -1556,16 +1637,6 @@ vim<span class="w"> </span>.env
 <p>Start SeaTicket server with the following command</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">ERROR: Named volume "xxx" is used in service "xxx" but no declaration was found in the volumes section</p>
-<p>You may encounter this problem when your Docker (or docker-compose) version is out of date. You can upgrade or reinstall the Docker service to solve this problem according to the <a href="https://docs.docker.com/engine/install/">Docker official documentation</a>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You must run the above command in the directory with the <code>.env</code>. If <code>.env</code> file is elsewhere, please run</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span class="w"> </span>/path/to/.env<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
-</div>
 <h3 id="create-an-admin">Create an admin<a class="headerlink" href="#create-an-admin" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>seaqa-web<span class="w"> </span>/scripts/reset-admin.sh
 </code></pre></div>
