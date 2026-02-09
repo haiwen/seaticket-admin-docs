@@ -1,0 +1,22 @@
+name: Deploy CI
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:  
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-material-extensions mike
+      - run: cd $GITHUB_WORKSPACE
+      - run: git config user.name ci-bot
+      - run: git config user.email ci-bot@seaticket.ai
+      - run: mike deploy --push -u main
