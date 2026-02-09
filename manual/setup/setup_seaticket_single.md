@@ -30,7 +30,7 @@ Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installin
 
 ### Prepare S3 storage
 
-You need to create two buckets on your S3 storage backend provider for SeaTicket `file` and `web crawl` storage.
+You need to create two buckets on S3 storage provider for storing files and crawled web pages.
 
 ## Deploy SeaTicket
 
@@ -106,10 +106,10 @@ The following fields merit particular attention:
 | `REDIS_PORT`       | Redis server port | `6379` |
 | `REDIS_PASSWORD`       | Redis server password | (required) |
 | `S3_HOST`       | Host of your buckets | (required when not use AWS) |
-| `S3_FILE_BUCKET`       | S3 storage backend file objects bucket | (required) |
-| `S3_WEB_CRAWL_BUCKET`       | S3 storage backend web crawl objects bucket | (required) |
-| `S3_KEY_ID`       | S3 storage backend key ID | (required) |
-| `S3_SECRET_KEY`       | S3 storage backend secret key | (required) |
+| `S3_FILE_BUCKET`       | S3 bucket for files | (required) |
+| `S3_WEB_CRAWL_BUCKET`       | S3 bucket for crawled web pages | (required) |
+| `S3_KEY_ID`       | S3 storage key ID | (required) |
+| `S3_SECRET_KEY`       | S3 storage secret key | (required) |
 
 ### Start SeaTicket server
 
