@@ -804,10 +804,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#download-and-modify-env" class="md-nav__link">
+  <a href="#download-and-modify-env-configyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Download and modify .env
+        Download and modify .env, config.yml
       
     </span>
   </a>
@@ -1328,10 +1328,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#download-and-modify-env" class="md-nav__link">
+  <a href="#download-and-modify-env-configyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Download and modify .env
+        Download and modify .env, config.yml
       
     </span>
   </a>
@@ -1525,6 +1525,7 @@
 <p>Please refer to <a href="https://dev.mysql.com/doc/refman/8.4/en/installing.html">Deploy MySQL</a> for more details.</p>
 <h3 id="deploy-seasearch">Deploy SeaSearch<a class="headerlink" href="#deploy-seasearch" title="Permanent link">&para;</a></h3>
 <h3 id="prepare-s3-storage">Prepare S3 storage<a class="headerlink" href="#prepare-s3-storage" title="Permanent link">&para;</a></h3>
+<p>You need to create two buckets on S3 storage provider for storing files and crawled web pages.</p>
 <h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
 <h3 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h3>
 <p>Before starting SeaTicket, you need to create MySQL user <code>seaticket</code> and create the database <code>seaticket_db</code>.</p>
@@ -1543,7 +1544,7 @@ FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
 USE<span class="w"> </span>seaticket_db<span class="p">;</span>
 SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 </code></pre></div>
-<h3 id="download-and-modify-env">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env" title="Permanent link">&para;</a></h3>
+<h3 id="download-and-modify-env-configyml">Download and modify <code>.env</code>, <code>config.yml</code><a class="headerlink" href="#download-and-modify-env-configyml" title="Permanent link">&para;</a></h3>
 <p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>config.yml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
@@ -1650,6 +1651,31 @@ vim<span class="w"> </span>.env
 <tr>
 <td><code>REDIS_PASSWORD</code></td>
 <td>Redis server password</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_HOST</code></td>
+<td>Host of your buckets</td>
+<td>(required when not use AWS)</td>
+</tr>
+<tr>
+<td><code>S3_FILE_BUCKET</code></td>
+<td>S3 bucket for files</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_WEB_CRAWL_BUCKET</code></td>
+<td>S3 bucket for crawled web pages</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_KEY_ID</code></td>
+<td>S3 storage key ID</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_SECRET_KEY</code></td>
+<td>S3 storage secret key</td>
 <td>(required)</td>
 </tr>
 </tbody>
