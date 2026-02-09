@@ -19,4 +19,5 @@ jobs:
       - run: cd $GITHUB_WORKSPACE
       - run: git config user.name ci-bot
       - run: git config user.email ci-bot@seaticket.ai
-      - run: mike deploy --push -u main
+      - run: mike deploy --push -u main latest
+      - run: mike set-default latest
