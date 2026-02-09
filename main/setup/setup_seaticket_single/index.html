@@ -903,28 +903,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-a-new-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add a new admin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-and-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup and recovery
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1427,28 +1405,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-a-new-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add a new admin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-and-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup and recovery
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1734,13 +1690,6 @@ docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span cla
 <p>To monitor all SeaTicket logs simultaneously (from outside of the container), run</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>/opt/seaticket/logs/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span>*.log<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
 </code></pre></div>
-<h2 id="add-a-new-admin">Add a new admin<a class="headerlink" href="#add-a-new-admin" title="Permanent link">&para;</a></h2>
-<p>Ensure the container is running, then enter this command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>seaqa-web<span class="w"> </span>/scripts/reset-admin.sh
-</code></pre></div>
-<p>Enter the username and password according to the prompts. You now have a new admin account.</p>
-<h2 id="backup-and-recovery">Backup and recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
-<p>Follow the instructions in <a href="../administration/backup_recovery.md">Backup and restore for SeaTicket Docker</a></p>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <h3 id="seaticket-service-and-container-maintenance">SeaTicket service and container maintenance<a class="headerlink" href="#seaticket-service-and-container-maintenance" title="Permanent link">&para;</a></h3>
 <p>Q: If I want enter into the Docker container, which command I can use?</p>
