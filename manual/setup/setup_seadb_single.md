@@ -1,4 +1,4 @@
-# Setup SeaDB
+# Setup SeaDB in single node
 
 SeaDB depends on [FoundationDB](https://apple.github.io/foundationdb/). 
 
