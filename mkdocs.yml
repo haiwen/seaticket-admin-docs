@@ -88,3 +88,8 @@ nav:
     - Overview: setup/overview.md
     - Setup SeaDB: setup/setup_seadb.md
     - Setup SeaTicket: setup/setup_by_docker.md
+  - Configuration:
+    - Environment Variables: configuration/environment_variables.md
+  - Administration:
+    - Backup and Restore: administration/backup_and_restore.md
+    - Cleanup database: administration/cleanup_database.md
