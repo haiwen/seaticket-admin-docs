@@ -88,9 +88,9 @@ nav:
     - Overview: setup/overview.md
     - SeaDB:
       - SeaDB single node: setup/setup_seadb_single.md
-      - SeaDB cluster: setup/
+      - SeaDB cluster: setup/setup_seadb_cluster.md
     - SeaTicket:
-      - Setup SeaTicket: setup/setup_by_docker.md
+      - Setup SeaTicket: setup/setup_seaticket_single.md
   - Configuration:
     - Environment Variables: configuration/environment_variables.md
   - Administration:
