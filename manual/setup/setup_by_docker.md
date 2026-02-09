@@ -165,7 +165,7 @@ The following fields merit particular attention:
 Modify `COMPOSE_FILE` in `.env` file:
 
 ```env
-COMPOSE_FILE='mysql.yml,redis.yml,caddy.yml,seaqa-web.yml'
+COMPOSE_FILE='caddy.yml,seaqa-web.yml'
 ```
 
 Start SeaTicket server with the following command
