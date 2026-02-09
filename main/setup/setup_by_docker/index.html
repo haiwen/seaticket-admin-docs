@@ -13,6 +13,8 @@
         <link rel="canonical" href="https://manual.seaticket.ai/main/setup/setup_by_docker/">
       
       
+        <link rel="prev" href="../setup_seadb/">
+      
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>Setup - SeaTicket Admin Manual</title>
+        <title>Setup SeaTicket - SeaTicket Admin Manual</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installation-of-seaticket-server-with-docker" class="md-skip">
+        <a href="#setup-seaticket-server" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setup
+              Setup SeaTicket
             
           </span>
         </div>
@@ -229,12 +231,22 @@
   
   
   
-    
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
   
   
     
-    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
       
+        
   
   
   
@@ -244,7 +256,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -252,9 +264,6 @@
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -307,6 +316,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -328,10 +364,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -349,8 +385,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -364,38 +400,17 @@
                 
   
   
-    
   
   
-  
-    
-    
-    
-    
-      
-      
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
         
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="">
-            
   
   
   <span class="md-ellipsis">
     
   
-    Installation
+    Overview
   
 
     
@@ -403,19 +418,39 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Installation
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup_seadb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup SeaDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -440,7 +475,7 @@
   <span class="md-ellipsis">
     
   
-    Setup
+    Setup SeaTicket
   
 
     
@@ -458,7 +493,7 @@
   <span class="md-ellipsis">
     
   
-    Setup
+    Setup SeaTicket
   
 
     
@@ -484,17 +519,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -502,73 +526,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Getting started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-seadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaDB
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy SeaDB">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploy-foundationdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy FoundationDB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-and-modify-env" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download and modify .env
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-seadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start SeaDB
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -607,7 +564,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#download-and-modify-env_1" class="md-nav__link">
+  <a href="#download-and-modify-env" class="md-nav__link">
     <span class="md-ellipsis">
       
         Download and modify .env
@@ -770,14 +727,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
   </ul>
 </nav>
@@ -806,17 +755,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -824,73 +762,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Getting started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-seadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaDB
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy SeaDB">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploy-foundationdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy FoundationDB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-and-modify-env" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download and modify .env
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-seadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start SeaDB
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -929,7 +800,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#download-and-modify-env_1" class="md-nav__link">
+  <a href="#download-and-modify-env" class="md-nav__link">
     <span class="md-ellipsis">
       
         Download and modify .env
@@ -1097,87 +968,24 @@
   
 
 
-<h1 id="installation-of-seaticket-server-with-docker">Installation of SeaTicket Server with Docker<a class="headerlink" href="#installation-of-seaticket-server-with-docker" title="Permanent link">&para;</a></h1>
-<h2 id="system-requirements">System requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h2>
-<p>In general, we recommend that you have at least 2G RAM and a 2-core CPU (&gt; 2GHz).</p>
+<h1 id="setup-seaticket-server">Setup SeaTicket Server<a class="headerlink" href="#setup-seaticket-server" title="Permanent link">&para;</a></h1>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>The following assumptions and conventions are used in the rest of this document:</p>
 <ul>
 <li><code>/opt/seaticket</code> is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.</li>
 <li>SeaTicket uses some <a href="https://docs.docker.com/storage/volumes/">Docker volumes</a> for persisting data generated in its database and SeaTicket Docker container. The volumes' <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">host paths</a> like <code>/opt/caddy-data</code> and <code>/opt/seaticket-data</code>, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.</li>
 <li>All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.</li>
-<li>SeaTicket contains some components that we recommend you deploy using different machines.</li>
-<li>SeaDB and FoundationDB</li>
+<li>Beside Seadb, SeaTicket server depends on the following third-party services</li>
 <li>MySQL</li>
 <li>Redis</li>
+<li>S3 storage</li>
+<li>SeaTicket contains following components, each packaged as a separate docker image</li>
 <li>Caddy and seaqa-web</li>
 <li>seaqa-ai</li>
 <li>seaqa-events</li>
 <li>seaqa-indexer</li>
 </ul>
-<h3 id="install-docker">Install docker<a class="headerlink" href="#install-docker" title="Permanent link">&para;</a></h3>
-<p>Use the <a href="https://docs.docker.com/engine/install/">official installation guide for your OS to install Docker</a>.</p>
-<h2 id="deploy-seadb">Deploy SeaDB<a class="headerlink" href="#deploy-seadb" title="Permanent link">&para;</a></h2>
-<p>SeaTicket depends on SeaDB, you need to deploy SeaDB first. It is recommended that you deploy SeaTicket and SeaDB separately using different machines.</p>
-<h3 id="deploy-foundationdb">Deploy FoundationDB<a class="headerlink" href="#deploy-foundationdb" title="Permanent link">&para;</a></h3>
-<p>Please refer to the <a href="https://apple.github.io/foundationdb/getting-started-mac.html">official documentation</a> to deploy FoundationDB.</p>
-<h3 id="download-and-modify-env">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env" title="Permanent link">&para;</a></h3>
-<p>To deploy SeaDB with Docker, you have to <code>.env</code>, <code>seadb.yml</code> and <code>fdb.cluster</code> in a directory (e.g., <code>/opt/seadb</code>):</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seadb
-<span class="nb">cd</span><span class="w"> </span>/opt/seadb
-
-wget<span class="w"> </span>-O<span class="w"> </span>.env<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/env-seadb
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seadb.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/fdb.cluster
-
-vim<span class="w"> </span>.env
-</code></pre></div>
-<p>The following fields merit particular attention:</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>JWT_PRIVATE_KEY</code></td>
-<td>JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for SeaTicket, which can be generated by using <code>pwgen -s 40 1</code></td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>SEADB_VOLUME</code></td>
-<td>The volume directory of SeaDB data</td>
-<td><code>/opt/seadb-data</code></td>
-</tr>
-<tr>
-<td><code>FDB_VOLUME</code></td>
-<td>The volume directory of FoundationDB data</td>
-<td><code>/opt/fdb-data</code></td>
-</tr>
-<tr>
-<td><code>TIME_ZONE</code></td>
-<td>Time zone</td>
-<td><code>UTC</code></td>
-</tr>
-</tbody>
-</table>
-<p>Modify <code>fdb.cluster</code>, the content should copy from the <code>/etc/foundationdb/fdb.cluster</code> file in the FoundationDB node:</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>fdb.cluster
-</code></pre></div>
-<h3 id="start-seadb">Start SeaDB<a class="headerlink" href="#start-seadb" title="Permanent link">&para;</a></h3>
-<p>Run the following command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-
-docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>seadb
-</code></pre></div>
-<p>When you see the following log, it means that SeaDB is ready:</p>
-<div class="highlight"><pre><span></span><code>seadb | seadb started
-</code></pre></div>
 <h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
-<p>SeaTicket depends on MySQL and Redis.</p>
 <h3 id="deploy-redis">Deploy Redis<a class="headerlink" href="#deploy-redis" title="Permanent link">&para;</a></h3>
 <p>Please refer to <a href="https://redis.io/docs/latest/get-started/">Deploy Redis</a> for more details.</p>
 <h3 id="deploy-mysql">Deploy MySQL<a class="headerlink" href="#deploy-mysql" title="Permanent link">&para;</a></h3>
@@ -1198,7 +1006,7 @@ FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
 USE<span class="w"> </span>seaticket_db<span class="p">;</span>
 SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 </code></pre></div>
-<h3 id="download-and-modify-env_1">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env_1" title="Permanent link">&para;</a></h3>
+<h3 id="download-and-modify-env">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env" title="Permanent link">&para;</a></h3>
 <p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>config.yml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
@@ -1425,6 +1233,28 @@ docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span cla
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../setup_seadb/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup SeaDB">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Setup SeaDB
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

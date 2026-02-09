@@ -5,7 +5,15 @@
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
+         <loc>https://manual.seaticket.ai/main/setup/overview/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_by_docker/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://manual.seaticket.ai/main/setup/setup_seadb/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
 </urlset>
