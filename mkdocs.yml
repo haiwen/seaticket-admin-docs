@@ -90,6 +90,7 @@ nav:
       - SeaDB single node: setup/setup_seadb_single.md
       - SeaDB cluster: setup/setup_seadb_cluster.md
     - SeaTicket:
+      - Setup prequisites: setup/setup_seaticket_prequisites.md
       - Setup SeaTicket: setup/setup_seaticket_single.md
   - Configuration:
     - Environment Variables: configuration/environment_variables.md

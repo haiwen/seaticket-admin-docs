@@ -1,44 +1,20 @@
 # Setup SeaTicket Server
 
-
 ## Getting started
 
 The following assumptions and conventions are used in the rest of this document:
 
 - `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
 - SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/caddy-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
-- All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.
-- Beside Seadb, SeaTicket server depends on the following third-party services:
-    - MySQL
-    - Redis
-    - S3 storage
-    - SeaSearch
+- All configuration and log files for SeaTicket are stored in the volume of the SeaTicket container.
 - SeaTicket contains following components, each packaged as a separate docker image:
     - Caddy and seaqa-web
     - seaqa-ai
     - seaqa-events
     - seaqa-indexer
 
-## Deploy MySQL, Redis and S3 storage
 
-### Deploy Redis
-
-Please refer to [Deploy Redis](https://redis.io/docs/latest/get-started/) for more details.
-
-### Deploy MySQL
-
-Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installing.html) for more details.
-
-### Deploy SeaSearch
-
-
-### Prepare S3 storage
-
-You need to create two buckets on S3 storage provider for storing files and crawled web pages.
-
-## Deploy SeaTicket
-
-### Preparing seaticket_db
+## Preparing seaticket_db
 
 Before starting SeaTicket, you need to create MySQL user `seaticket` and create the database `seaticket_db`.
 
@@ -63,7 +39,7 @@ USE seaticket_db;
 SOURCE /tmp/mysql.sql;
 ```
 
-### Download and modify `.env`, `config.yml`
+## Download and modify `.env`, `config.yml`
 
 To deploy SeaTicket with Docker, you have to `.env`, `caddy.yml`, `seaqa-web.yml`, `seaqa-indexer.yml`, `seaqa-ai.yml`, `seaqa-events.yml`, and `config.yml` in a directory (e.g., `/opt/seaticket`):
 
@@ -115,7 +91,8 @@ The following fields merit particular attention:
 | `S3_KEY_ID`       | S3 storage key ID | (required) |
 | `S3_SECRET_KEY`       | S3 storage secret key | (required) |
 
-### Start SeaTicket server
+
+## Start SeaTicket server
 
 Modify `COMPOSE_FILE` in `.env` file:
 
@@ -130,7 +107,7 @@ docker compose up -d
 ```
 
 
-### Create an admin
+## Add admin account
 
 ```bash
 docker exec -it seaqa-web /scripts/reset-admin.sh
@@ -140,7 +117,7 @@ Enter the username and password according to the prompts. You now have a new adm
 
 Finially, you can go to `http://seaticket.example.com` to use SeaTicket.
 
-### Deploy other components
+## Deploy other components
 
 You can deploy other components of SeaTicket, such as seaqa-ai, seaqa-events, seaqa-indexer.
 
@@ -173,7 +150,7 @@ Placeholder spot for shared volumes. You may elect to store certain persistent i
     * /opt/seaticket-data/logs: This is the directory that would contain the log files of seaticket server processes. For example, you can find seaqa-web logs in `/opt/seaticket/logs/seaqa-web.log`.
     * /opt/seaticket-data/seaqa-web-data: This is the directory that would contain the avatar files of seaticket server processes.
 
-### Find logs
+## Find logs
 
 To monitor container logs (from outside of the container), please use the following commands:
 
@@ -197,36 +174,3 @@ To monitor all SeaTicket logs simultaneously (from outside of the container), ru
 sudo tail -f $(find /opt/seaticket/logs/ -type f -name *.log 2>/dev/null)
 ```
 
-
-## FAQ
-
-### SeaTicket service and container maintenance
-
-Q: If I want enter into the Docker container, which command I can use?
-
-A: You can enter into the docker container using the command:
-
-```bash
-docker exec -it seaqa-web /bin/bash
-```
-
-
-Q: I forgot the SeaTicket admin email address/password, how do I create a new admin account?
-
-A: You can create a new admin account by running
-
-```shell
-docker exec -it seaqa-web /scripts/reset-admin.sh
-```
-
-The SeaTicket service must be up when running the superuser command.
-
-
-Q: If, for whatever reason, the installation fails, how do I to start from a clean slate again?
-
-A: Remove the directories /opt/seaticket, /opt/seaticket-data and /opt/mysql-data and start again.
-
-
-Q: Something goes wrong during the start of the containers. How can I find out more?
-
-A: You can view the docker logs using this command: `docker compose logs -f`.
