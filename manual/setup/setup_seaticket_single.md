@@ -12,6 +12,7 @@ The following assumptions and conventions are used in the rest of this document:
     - MySQL
     - Redis
     - S3 storage
+    - SeaSearch
 - SeaTicket contains following components, each packaged as a separate docker image:
     - Caddy and seaqa-web
     - seaqa-ai
@@ -27,6 +28,9 @@ Please refer to [Deploy Redis](https://redis.io/docs/latest/get-started/) for mo
 ### Deploy MySQL
 
 Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installing.html) for more details.
+
+### Deploy SeaSearch
+
 
 ### Prepare S3 storage
 
