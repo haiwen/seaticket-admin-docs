@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://manual.seaticket.ai/main/setup/setup_seaticket_single/">
       
       
-        <link rel="prev" href="../setup_seadb_cluster/">
+        <link rel="prev" href="../setup_seaticket_prequisites/">
       
       
         <link rel="next" href="../../configuration/environment_variables/">
@@ -646,6 +646,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup_seaticket_prequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup prequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -720,79 +748,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-mysql-redis-and-s3-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy MySQL, Redis and S3 storage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy MySQL, Redis and S3 storage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploy-redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy Redis
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy-mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy MySQL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy-seasearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaSearch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prepare-s3-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prepare S3 storage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-seaticket" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaTicket
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy SeaTicket">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#preparing-seaticket_db" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -802,8 +757,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#download-and-modify-env-configyml" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -813,8 +768,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#start-seaticket-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -824,19 +779,19 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#create-an-admin" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#add-admin-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create an admin
+        Add admin account
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#deploy-other-components" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -844,11 +799,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -886,7 +836,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#find-logs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -894,39 +849,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FAQ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="FAQ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#seaticket-service-and-container-maintenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SeaTicket service and container maintenance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1222,79 +1144,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-mysql-redis-and-s3-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy MySQL, Redis and S3 storage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy MySQL, Redis and S3 storage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deploy-redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy Redis
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy-mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy MySQL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy-seasearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaSearch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prepare-s3-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prepare S3 storage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-seaticket" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploy SeaTicket
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy SeaTicket">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#preparing-seaticket_db" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1304,8 +1153,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#download-and-modify-env-configyml" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1315,8 +1164,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#start-seaticket-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1326,19 +1175,19 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#create-an-admin" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#add-admin-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create an admin
+        Add admin account
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#deploy-other-components" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1346,11 +1195,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1388,7 +1232,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#find-logs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1396,39 +1245,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FAQ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="FAQ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#seaticket-service-and-container-maintenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SeaTicket service and container maintenance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1458,14 +1274,7 @@
 <ul>
 <li><code>/opt/seaticket</code> is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.</li>
 <li>SeaTicket uses some <a href="https://docs.docker.com/storage/volumes/">Docker volumes</a> for persisting data generated in its database and SeaTicket Docker container. The volumes' <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">host paths</a> like <code>/opt/caddy-data</code> and <code>/opt/seaticket-data</code>, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.</li>
-<li>All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.</li>
-<li>Beside Seadb, SeaTicket server depends on the following third-party services:<ul>
-<li>MySQL</li>
-<li>Redis</li>
-<li>S3 storage</li>
-<li>SeaSearch</li>
-</ul>
-</li>
+<li>All configuration and log files for SeaTicket are stored in the volume of the SeaTicket container.</li>
 <li>SeaTicket contains following components, each packaged as a separate docker image:<ul>
 <li>Caddy and seaqa-web</li>
 <li>seaqa-ai</li>
@@ -1474,16 +1283,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="deploy-mysql-redis-and-s3-storage">Deploy MySQL, Redis and S3 storage<a class="headerlink" href="#deploy-mysql-redis-and-s3-storage" title="Permanent link">&para;</a></h2>
-<h3 id="deploy-redis">Deploy Redis<a class="headerlink" href="#deploy-redis" title="Permanent link">&para;</a></h3>
-<p>Please refer to <a href="https://redis.io/docs/latest/get-started/">Deploy Redis</a> for more details.</p>
-<h3 id="deploy-mysql">Deploy MySQL<a class="headerlink" href="#deploy-mysql" title="Permanent link">&para;</a></h3>
-<p>Please refer to <a href="https://dev.mysql.com/doc/refman/8.4/en/installing.html">Deploy MySQL</a> for more details.</p>
-<h3 id="deploy-seasearch">Deploy SeaSearch<a class="headerlink" href="#deploy-seasearch" title="Permanent link">&para;</a></h3>
-<h3 id="prepare-s3-storage">Prepare S3 storage<a class="headerlink" href="#prepare-s3-storage" title="Permanent link">&para;</a></h3>
-<p>You need to create two buckets on S3 storage provider for storing files and crawled web pages.</p>
-<h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
-<h3 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h3>
+<h2 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h2>
 <p>Before starting SeaTicket, you need to create MySQL user <code>seaticket</code> and create the database <code>seaticket_db</code>.</p>
 <p>Copy <code>mysql.sql</code> file to the host <code>/tmp</code> directory:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/tmp:/shared<span class="w"> </span>seaticket/seaqa-web:1.0-latest<span class="w"> </span>cp<span class="w"> </span>/opt/seaticket/seaqa-web/sql/mysql.sql<span class="w"> </span>/shared
@@ -1500,7 +1300,7 @@ FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
 USE<span class="w"> </span>seaticket_db<span class="p">;</span>
 SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 </code></pre></div>
-<h3 id="download-and-modify-env-configyml">Download and modify <code>.env</code>, <code>config.yml</code><a class="headerlink" href="#download-and-modify-env-configyml" title="Permanent link">&para;</a></h3>
+<h2 id="download-and-modify-env-configyml">Download and modify <code>.env</code>, <code>config.yml</code><a class="headerlink" href="#download-and-modify-env-configyml" title="Permanent link">&para;</a></h2>
 <p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>config.yml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
@@ -1636,19 +1436,19 @@ vim<span class="w"> </span>.env
 </tr>
 </tbody>
 </table>
-<h3 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h3>
+<h2 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h2>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
 <div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;caddy.yml,seaqa-web.yml&#39;
 </code></pre></div>
 <p>Start SeaTicket server with the following command</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<h3 id="create-an-admin">Create an admin<a class="headerlink" href="#create-an-admin" title="Permanent link">&para;</a></h3>
+<h2 id="add-admin-account">Add admin account<a class="headerlink" href="#add-admin-account" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>seaqa-web<span class="w"> </span>/scripts/reset-admin.sh
 </code></pre></div>
 <p>Enter the username and password according to the prompts. You now have a new admin account.</p>
 <p>Finially, you can go to <code>http://seaticket.example.com</code> to use SeaTicket.</p>
-<h3 id="deploy-other-components">Deploy other components<a class="headerlink" href="#deploy-other-components" title="Permanent link">&para;</a></h3>
+<h2 id="deploy-other-components">Deploy other components<a class="headerlink" href="#deploy-other-components" title="Permanent link">&para;</a></h2>
 <p>You can deploy other components of SeaTicket, such as seaqa-ai, seaqa-events, seaqa-indexer.</p>
 <p>Copy <code>/opt/seaticket</code> to other machines.</p>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
@@ -1674,7 +1474,7 @@ vim<span class="w"> </span>.env
 </ul>
 </li>
 </ul>
-<h3 id="find-logs">Find logs<a class="headerlink" href="#find-logs" title="Permanent link">&para;</a></h3>
+<h2 id="find-logs">Find logs<a class="headerlink" href="#find-logs" title="Permanent link">&para;</a></h2>
 <p>To monitor container logs (from outside of the container), please use the following commands:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># if the `.env` file is in current directory:</span>
 docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>--follow
@@ -1690,21 +1490,6 @@ docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span cla
 <p>To monitor all SeaTicket logs simultaneously (from outside of the container), run</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>/opt/seaticket/logs/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span>*.log<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
 </code></pre></div>
-<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
-<h3 id="seaticket-service-and-container-maintenance">SeaTicket service and container maintenance<a class="headerlink" href="#seaticket-service-and-container-maintenance" title="Permanent link">&para;</a></h3>
-<p>Q: If I want enter into the Docker container, which command I can use?</p>
-<p>A: You can enter into the docker container using the command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>seaqa-web<span class="w"> </span>/bin/bash
-</code></pre></div>
-<p>Q: I forgot the SeaTicket admin email address/password, how do I create a new admin account?</p>
-<p>A: You can create a new admin account by running</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>seaqa-web<span class="w"> </span>/scripts/reset-admin.sh
-</code></pre></div>
-<p>The SeaTicket service must be up when running the superuser command.</p>
-<p>Q: If, for whatever reason, the installation fails, how do I to start from a clean slate again?</p>
-<p>A: Remove the directories /opt/seaticket, /opt/seaticket-data and /opt/mysql-data and start again.</p>
-<p>Q: Something goes wrong during the start of the containers. How can I find out more?</p>
-<p>A: You can view the docker logs using this command: <code>docker compose logs -f</code>.</p>
 
 
 
@@ -1740,7 +1525,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span cla
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../setup_seadb_cluster/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SeaDB cluster">
+          <a href="../setup_seaticket_prequisites/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup prequisites">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1750,7 +1535,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>--env-file<span cla
                 Previous
               </span>
               <div class="md-ellipsis">
-                SeaDB cluster
+                Setup prequisites
               </div>
             </div>
           </a>
