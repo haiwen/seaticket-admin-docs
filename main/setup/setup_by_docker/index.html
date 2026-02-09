@@ -975,15 +975,19 @@
 <li><code>/opt/seaticket</code> is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.</li>
 <li>SeaTicket uses some <a href="https://docs.docker.com/storage/volumes/">Docker volumes</a> for persisting data generated in its database and SeaTicket Docker container. The volumes' <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">host paths</a> like <code>/opt/caddy-data</code> and <code>/opt/seaticket-data</code>, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.</li>
 <li>All configuration and log files for SeaTicket and the webserver Nginx are stored in the volume of the SeaTicket container.</li>
-<li>Beside Seadb, SeaTicket server depends on the following third-party services</li>
+<li>Beside Seadb, SeaTicket server depends on the following third-party services:<ul>
 <li>MySQL</li>
 <li>Redis</li>
 <li>S3 storage</li>
-<li>SeaTicket contains following components, each packaged as a separate docker image</li>
+</ul>
+</li>
+<li>SeaTicket contains following components, each packaged as a separate docker image:<ul>
 <li>Caddy and seaqa-web</li>
 <li>seaqa-ai</li>
 <li>seaqa-events</li>
 <li>seaqa-indexer</li>
+</ul>
+</li>
 </ul>
 <h2 id="deploy-seaticket">Deploy SeaTicket<a class="headerlink" href="#deploy-seaticket" title="Permanent link">&para;</a></h2>
 <h3 id="deploy-redis">Deploy Redis<a class="headerlink" href="#deploy-redis" title="Permanent link">&para;</a></h3>
