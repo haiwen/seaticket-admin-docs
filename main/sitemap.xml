@@ -25,15 +25,15 @@
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
-         <loc>https://manual.seaticket.ai/main/setup/setup_by_docker/</loc>
-         <lastmod>2026-02-09</lastmod>
-    </url>
-    <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seadb_cluster/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seadb_single/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://manual.seaticket.ai/main/setup/setup_seaticket_single/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
 </urlset>
