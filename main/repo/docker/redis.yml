@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: ${REDIS_IMAGE:-redis:8.0}
+    restart: unless-stopped
+    container_name: redis
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - TZ=${TIME_ZONE:-}
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 20s
+      retries: 3
+      timeout: 5s
+
+networks:
+  backend-net:
+    name: backend-net

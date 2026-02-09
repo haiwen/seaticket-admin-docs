@@ -1,0 +1,31 @@
+services:
+  seaqa-web:
+    image: ${SEAQA_WEB_IMAGE:-seaticket/seaqa-web:0.1.0-testing}
+    restart: unless-stopped
+    container_name: seaqa-web
+    # ports:
+    #   - 80:80
+    volumes:
+      - ./config.yml:/opt/seaticket/conf/config.yml:ro
+      - ${SEATICKET_VOLUME:-/opt/seaticket-data}:/shared
+    environment:
+      - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
+      - TZ=${TIME_ZONE:-}
+    networks:
+      - frontend-net
+      - backend-net
+    labels:
+      caddy: ${SEATICKET_SERVER_PROTOCOL:-http}://${SEATICKET_SERVER_HOSTNAME:?Variable is not set or empty}
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:80 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  frontend-net:
+    name: frontend-net
+  backend-net:
+    name: backend-net
