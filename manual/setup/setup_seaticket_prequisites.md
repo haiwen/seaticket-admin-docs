@@ -18,6 +18,14 @@ Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installin
 
 ## Prepair S3 storage
 
+You need to create three buckets on S3 storage provider for storing files, crawled web pages and SeaSearch.
 
 ## Deploy SeaSearch
 
+Please refer to [Deploy SeaSearch](https://seasearch-manual.seafile.com/latest/usage/deploy/) for more details.
+
+Note: When using SeaTicket, there is no need to deploy Caddy for SeaSearch. Modify `COMPOSE_FILE` in `.env`:
+
+```env
+COMPOSE_FILE='seasearch.yml'
+```
