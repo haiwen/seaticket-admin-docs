@@ -1137,7 +1137,12 @@
 <h2 id="deploy-mysql">Deploy MySQL<a class="headerlink" href="#deploy-mysql" title="Permanent link">&para;</a></h2>
 <p>Please refer to <a href="https://dev.mysql.com/doc/refman/8.4/en/installing.html">Deploy MySQL</a> for more details.</p>
 <h2 id="prepair-s3-storage">Prepair S3 storage<a class="headerlink" href="#prepair-s3-storage" title="Permanent link">&para;</a></h2>
+<p>You need to create three buckets on S3 storage provider for storing files, crawled web pages and SeaSearch.</p>
 <h2 id="deploy-seasearch">Deploy SeaSearch<a class="headerlink" href="#deploy-seasearch" title="Permanent link">&para;</a></h2>
+<p>Please refer to <a href="https://seasearch-manual.seafile.com/latest/usage/deploy/">Deploy SeaSearch</a> for more details.</p>
+<p>Note: When using SeaTicket, there is no need to deploy Caddy for SeaSearch. Modify <code>COMPOSE_FILE</code> in <code>.env</code>:</p>
+<div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;seasearch.yml&#39;
+</code></pre></div>
 
 
 

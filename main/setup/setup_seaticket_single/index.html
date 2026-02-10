@@ -1353,7 +1353,7 @@ vim<span class="w"> </span>.env
 </tbody>
 </table>
 <p>And modify <code>config.yml</code>:</p>
-<p>Note: <code>JWT_PRIVATE_KEY</code> is the same as the one in SeaDB <code>.env</code> file.</p>
+<p>Note: <code>JWT_PRIVATE_KEY</code> is the same as the one in SeaDB <code>.env</code> file. Refer to <a href="https://seasearch-manual.seafile.com/latest/usage/use_and_access_seasearch_apis/#get-auth-token">SeaSearch manual</a> for <code>SEASEARCH_TOKEN</code>.</p>
 <p>The following fields merit particular attention:</p>
 <table>
 <thead>
@@ -1367,7 +1367,7 @@ vim<span class="w"> </span>.env
 <tr>
 <td><code>SEAQA_MYSQL_DB_HOST</code></td>
 <td>The host of MySQL</td>
-<td><code>db</code></td>
+<td>(required)</td>
 </tr>
 <tr>
 <td><code>SEAQA_MYSQL_DB_PORT</code></td>
@@ -1397,7 +1397,7 @@ vim<span class="w"> </span>.env
 <tr>
 <td><code>REDIS_HOST</code></td>
 <td>Redis server host</td>
-<td><code>redis</code></td>
+<td>(required)</td>
 </tr>
 <tr>
 <td><code>REDIS_PORT</code></td>
@@ -1433,6 +1433,31 @@ vim<span class="w"> </span>.env
 <td><code>S3_SECRET_KEY</code></td>
 <td>S3 storage secret key</td>
 <td>(required)</td>
+</tr>
+<tr>
+<td><code>SEASEARCH_URL</code></td>
+<td>SeaSearch url</td>
+<td>http://[SeaSearch host]:4080</td>
+</tr>
+<tr>
+<td><code>SEASEARCH_TOKEN</code></td>
+<td>SeaSearch token</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>SEADB_INNER_SERVER_URL</code></td>
+<td>SeaDB inner url</td>
+<td>http://[SeaDB host]:8888</td>
+</tr>
+<tr>
+<td><code>SEAQA_AI_INNER_SERVER_URL</code></td>
+<td>seaqa-ai inner url</td>
+<td>http://[seaqa-ai host]:8887</td>
+</tr>
+<tr>
+<td><code>SEAQA_INDEXER_INNER_SERVER_URL</code></td>
+<td>seaqa-indexer inner url</td>
+<td>http://[seaqa-indexer host]:8888</td>
 </tr>
 </tbody>
 </table>
