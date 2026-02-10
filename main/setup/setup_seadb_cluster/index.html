@@ -618,13 +618,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#deploy-foundationdb" class="md-nav__link">
+  <a href="#deploy-foundationdb-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy FoundationDB
+        Deploy FoundationDB Cluster
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploy FoundationDB Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foundationdb-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FoundationDB Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-foundationdbconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify foundationdb.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-the-foundationdb-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start the FoundationDB service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-foundationdb-for-external-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure FoundationDB for external access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-other-foundationdb-nodes-to-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the other FoundationDB nodes to the cluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-coordinator-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the coordinator servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjust-the-redundancy-mode-and-storage-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjust the redundancy mode and storage engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1067,13 +1150,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#deploy-foundationdb" class="md-nav__link">
+  <a href="#deploy-foundationdb-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy FoundationDB
+        Deploy FoundationDB Cluster
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploy FoundationDB Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foundationdb-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FoundationDB Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-foundationdbconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify foundationdb.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-the-foundationdb-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start the FoundationDB service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-foundationdb-for-external-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure FoundationDB for external access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-other-foundationdb-nodes-to-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the other FoundationDB nodes to the cluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-coordinator-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the coordinator servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjust-the-redundancy-mode-and-storage-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjust the redundancy mode and storage engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1139,11 +1305,124 @@
 <h1 id="setup-seadb-cluster">Setup SeaDB cluster<a class="headerlink" href="#setup-seadb-cluster" title="Permanent link">&para;</a></h1>
 <p>SeaDB depends on <a href="https://apple.github.io/foundationdb/">FoundationDB</a>. </p>
 <p>FoundationDB is a distributed database designed to handle large volumes of structured data across clusters of commodity servers.</p>
-<h2 id="deploy-foundationdb">Deploy FoundationDB<a class="headerlink" href="#deploy-foundationdb" title="Permanent link">&para;</a></h2>
-<p>Please refer to the <a href="https://apple.github.io/foundationdb/getting-started-mac.html">official documentation</a> to deploy FoundationDB.</p>
+<h2 id="deploy-foundationdb-cluster">Deploy FoundationDB Cluster<a class="headerlink" href="#deploy-foundationdb-cluster" title="Permanent link">&para;</a></h2>
+<p>This guide uses a three-node FoundationDB setup as an example <code>cluster-fdb1(192.168.0.10), cluster-fdb2(192.168.0.11), cluster-fdb3(192.168.0.12)</code>. Each node runs two fdbserver processes, and each fdbserver process uses its own dedicated SSD data disk (<code>/fdb1</code> and <code>/fdb2</code>). Unless otherwise specified, the following steps should be performed on all three nodes. For more information, please refer to the <a href="https://apple.github.io/foundationdb/building-cluster.html?wework_cfm_code=N62oKwB0BwL1eIEfRQ9gi2JYDKFJ2GVPsa4FeatkT5iEMS5q30ZBfJXubqhrhrPzBj07eBXsZFkcrCwzIDbgR4x13xzFY7o2zieAtTi5VZHWQn8SBMg2YjrV2X1If2DQiA%3D%3D">official documentation</a>.</p>
+<h3 id="foundationdb-installation">FoundationDB Installation<a class="headerlink" href="#foundationdb-installation" title="Permanent link">&para;</a></h3>
+<p>Install FoundationDB on each node according to the <a href="https://apple.github.io/foundationdb/getting-started-linux.html">official documentation</a>.</p>
+<p>Then, you need to stop the service and migrate existing data to the new directory.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Stop the service</span>
+systemctl<span class="w"> </span>stop<span class="w"> </span>foundationdb<span class="w"> </span><span class="o">||</span><span class="w"> </span>service<span class="w"> </span>foundationdb<span class="w"> </span>stop
+
+<span class="c1"># Create data directories</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>/fdb1/foundationdb/data/4500<span class="w"> </span>/fdb1/foundationdb/log/4500
+mkdir<span class="w"> </span>-p<span class="w"> </span>/fdb2/foundationdb/data/4501<span class="w"> </span>/fdb2/foundationdb/log/4501
+
+<span class="c1"># Migrate existing data</span>
+rsync<span class="w"> </span>-aHAX<span class="w"> </span>--numeric-ids<span class="w"> </span>/var/lib/foundationdb/data/4500/<span class="w"> </span>/fdb1/foundationdb/data/4500/
+<span class="c1"># If the second fdbserver process has not been started, you don’t need to run this step.</span>
+rsync<span class="w"> </span>-aHAX<span class="w"> </span>--numeric-ids<span class="w"> </span>/var/lib/foundationdb/data/4501/<span class="w"> </span>/fdb2/foundationdb/data/4501/
+
+<span class="c1"># Update permissions</span>
+chown<span class="w"> </span>-R<span class="w"> </span>foundationdb:foundationdb<span class="w"> </span>/fdb1/foundationdb<span class="w"> </span>/fdb2/foundationdb
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/fdb1/foundationdb/data/4500<span class="w"> </span>/fdb2/foundationdb/data/4501
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/fdb1/foundationdb/log/4500<span class="w"> </span>/fdb2/foundationdb/log/4501
+</code></pre></div>
+<h3 id="modify-foundationdbconf">Modify <code>foundationdb.conf</code><a class="headerlink" href="#modify-foundationdbconf" title="Permanent link">&para;</a></h3>
+<p>Specify <code>datadir</code> and <code>logdir</code> separately for each fdbserver process. Assign a <code>class</code> role to each fdbserver process.</p>
+<p>In the existing configuration, keep the default [fdbserver] section unchanged, and add the two fdbserver process configurations as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>fdbserver.4500<span class="o">]</span>
+<span class="nv">class</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>transaction
+<span class="nv">datadir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/fdb1/foundationdb/data/4500
+<span class="nv">logdir</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>/fdb1/foundationdb/log/4500
+
+<span class="o">[</span>fdbserver.4501<span class="o">]</span>
+<span class="nv">class</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>storage
+<span class="nv">datadir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/fdb2/foundationdb/data/4501
+<span class="nv">logdir</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>/fdb2/foundationdb/log/4501
+</code></pre></div>
+<h3 id="start-the-foundationdb-service">Start the FoundationDB service<a class="headerlink" href="#start-the-foundationdb-service" title="Permanent link">&para;</a></h3>
+<p>Check whether the foundationdb processes have started, and verify that the cluster status and the role/class identity of each process are correct.</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>start<span class="w"> </span>foundationdb<span class="w"> </span><span class="o">||</span><span class="w"> </span>service<span class="w"> </span>foundationdb<span class="w"> </span>start
+
+ss<span class="w"> </span>-lntp<span class="w"> </span><span class="p">|</span><span class="w"> </span>egrep<span class="w"> </span><span class="s1">&#39;:4500|:4501&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+
+fdbcli<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;status json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.cluster.processes</span>
+<span class="s1">         | to_entries[]</span>
+<span class="s1">         | &quot;\(.value.address)\tclass=\(.value.class_type // &quot;unset&quot;)\troles=\((.value.roles // [])|map(.role)|unique|join(&quot;,&quot;))&quot;&#39;</span>
+
+<span class="m">192</span>.168.0.12:4501<span class="w">   </span><span class="nv">class</span><span class="o">=</span>storage<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>ratekeeper,storage
+<span class="m">192</span>.168.0.11:4500<span class="w">   </span><span class="nv">class</span><span class="o">=</span>transaction<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>cluster_controller,coordinator,log,resolver
+<span class="m">192</span>.168.0.12:4500<span class="w">   </span><span class="nv">class</span><span class="o">=</span>transaction<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>commit_proxy,coordinator,grv_proxy,log
+<span class="m">192</span>.168.0.10:4500<span class="w">   </span><span class="nv">class</span><span class="o">=</span>transaction<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>commit_proxy,coordinator,log,master
+<span class="m">192</span>.168.0.10:4501<span class="w">   </span><span class="nv">class</span><span class="o">=</span>storage<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>data_distributor,storage
+<span class="m">192</span>.168.0.11:4501<span class="w">   </span><span class="nv">class</span><span class="o">=</span>storage<span class="w">  </span><span class="nv">roles</span><span class="o">=</span>consistency_scan,storage
+
+fdbcli
+&gt;<span class="w"> </span>status<span class="w"> </span>details
+</code></pre></div>
+<h3 id="configure-foundationdb-for-external-access">Configure FoundationDB for external access<a class="headerlink" href="#configure-foundationdb-for-external-access" title="Permanent link">&para;</a></h3>
+<p>Run the following on <code>cluster-fdb1</code>.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>/usr/lib/foundationdb/make_public.py<span class="w"> </span><span class="c1"># Generate the externally accessible address, similar to the example below</span>
+
+cat<span class="w"> </span>/etc/foundationdb/fdb.cluster
+<span class="c1"># DO NOT EDIT!</span>
+<span class="c1"># This file is auto-generated, it is not to be edited by hand</span>
+description:cluster-id@192.168.0.10:4500
+</code></pre></div>
+<h3 id="add-the-other-foundationdb-nodes-to-the-cluster">Add the other FoundationDB nodes to the cluster<a class="headerlink" href="#add-the-other-foundationdb-nodes-to-the-cluster" title="Permanent link">&para;</a></h3>
+<p>Copy the cluster file from an existing node in the cluster to the corresponding path on the new node (overwrite it), then restart.</p>
+<p>On <code>cluster-fdb2</code> and <code>cluster-fdb3</code>, run:</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>root@192.168.0.10:/etc/foundationdb/fdb.cluster<span class="w"> </span>/etc/foundationdb/fdb.cluster
+
+systemctl<span class="w"> </span>restart<span class="w"> </span>foundationdb<span class="w"> </span><span class="o">||</span><span class="w"> </span>service<span class="w"> </span>foundationdb<span class="w"> </span>restart
+</code></pre></div>
+<p>Check the cluster status to confirm that each machine has joined the cluster and that the process count is correct.</p>
+<div class="highlight"><pre><span></span><code>fdbcli<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;status details&quot;</span>
+</code></pre></div>
+<p>Key output:</p>
+<div class="highlight"><pre><span></span><code>Cluster:
+<span class="w">  </span>FoundationDB<span class="w"> </span>processes<span class="w"> </span>-<span class="w"> </span><span class="m">6</span>
+<span class="w">  </span>Zones<span class="w">                  </span>-<span class="w"> </span><span class="m">3</span>
+<span class="w">  </span>Machines<span class="w">               </span>-<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p>If a new node fails to join the cluster, it is usually because it was previously started with an old configuration. In that case, stop the service, clean the data directories, and rejoin:</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>stop<span class="w"> </span>foundationdb<span class="w"> </span><span class="o">||</span><span class="w"> </span>service<span class="w"> </span>foundationdb<span class="w"> </span>stop
+
+scp<span class="w"> </span>root@192.168.0.10:/etc/foundationdb/fdb.cluster<span class="w"> </span>/etc/foundationdb/fdb.cluster
+chown<span class="w"> </span>foundationdb:foundationdb<span class="w"> </span>/etc/foundationdb/fdb.cluster
+chmod<span class="w"> </span><span class="m">664</span><span class="w"> </span>/etc/foundationdb/fdb.cluster
+chmod<span class="w"> </span><span class="m">775</span><span class="w"> </span>/etc/foundationdb
+
+rm<span class="w"> </span>-rf<span class="w"> </span>/fdb1/foundationdb/data/4500/*
+rm<span class="w"> </span>-rf<span class="w"> </span>/fdb2/foundationdb/data/4501/*
+
+chown<span class="w"> </span>-R<span class="w"> </span>foundationdb:foundationdb<span class="w"> </span>/fdb1/foundationdb<span class="w"> </span>/fdb2/foundationdb
+
+systemctl<span class="w"> </span>start<span class="w"> </span>foundationdb<span class="w"> </span><span class="o">||</span><span class="w"> </span>service<span class="w"> </span>foundationdb<span class="w"> </span>start
+
+ss<span class="w"> </span>-lntp<span class="w"> </span><span class="p">|</span><span class="w"> </span>egrep<span class="w"> </span><span class="s1">&#39;4500|4501&#39;</span>
+
+<span class="c1"># Check cluster status.</span>
+fdbcli<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;status details&quot;</span>
+</code></pre></div>
+<h3 id="add-the-coordinator-servers">Add the coordinator servers<a class="headerlink" href="#add-the-coordinator-servers" title="Permanent link">&para;</a></h3>
+<p>Switch the coordinator servers and add more coordinators to improve fault tolerance.</p>
+<p>After all nodes have joined the cluster, run the following on any node (it’s recommended to use one process port per node as a coordinator, e.g., port 4500 on each node):</p>
+<div class="highlight"><pre><span></span><code>fdbcli
+fdb&gt;<span class="w"> </span>coordinators<span class="w"> </span><span class="m">192</span>.168.0.10:4500<span class="w"> </span><span class="m">192</span>.168.0.11:4500<span class="w"> </span><span class="m">192</span>.168.0.12:4500
+</code></pre></div>
+<h3 id="adjust-the-redundancy-mode-and-storage-engine">Adjust the redundancy mode and storage engine<a class="headerlink" href="#adjust-the-redundancy-mode-and-storage-engine" title="Permanent link">&para;</a></h3>
+<p>Run on any node.</p>
+<div class="highlight"><pre><span></span><code>fdbcli
+fdb&gt;<span class="w"> </span>configure<span class="w"> </span><span class="nv">storage_migration_type</span><span class="o">=</span>aggressive
+fdb&gt;<span class="w"> </span>configure<span class="w"> </span>double<span class="w"> </span>ssd
+fdb&gt;<span class="w"> </span>status<span class="w"> </span>details
+</code></pre></div>
 <h2 id="deploy-seadb">Deploy SeaDB<a class="headerlink" href="#deploy-seadb" title="Permanent link">&para;</a></h2>
 <h3 id="download-and-modify-env">Download and modify <code>.env</code><a class="headerlink" href="#download-and-modify-env" title="Permanent link">&para;</a></h3>
-<p>To deploy SeaDB with Docker, you have to <code>.env</code>, <code>seadb.yml</code> and <code>fdb.cluster</code> in a directory (e.g., <code>/opt/seadb</code>):</p>
+<p>You should deploy the SeaDB service on a new node using Docker.</p>
+<p>To deploy SeaDB with Docker, you need to download <code>.env</code>, <code>seadb.yml</code> and <code>fdb.cluster</code> in a directory (e.g., <code>/opt/seadb</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seadb
 <span class="nb">cd</span><span class="w"> </span>/opt/seadb
 
@@ -1174,18 +1453,13 @@ vim<span class="w"> </span>.env
 <td><code>/opt/seadb-data</code></td>
 </tr>
 <tr>
-<td><code>FDB_VOLUME</code></td>
-<td>The volume directory of FoundationDB data</td>
-<td><code>/opt/fdb-data</code></td>
-</tr>
-<tr>
 <td><code>TIME_ZONE</code></td>
 <td>Time zone</td>
 <td><code>UTC</code></td>
 </tr>
 </tbody>
 </table>
-<p>Modify <code>fdb.cluster</code>, the content should copy from the <code>/etc/foundationdb/fdb.cluster</code> file in the FoundationDB node:</p>
+<p>Modify <code>fdb.cluster</code>, the content should copy from the <code>/etc/foundationdb/fdb.cluster</code> file in any FoundationDB node:</p>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>fdb.cluster
 </code></pre></div>
 <h3 id="start-seadb">Start SeaDB<a class="headerlink" href="#start-seadb" title="Permanent link">&para;</a></h3>

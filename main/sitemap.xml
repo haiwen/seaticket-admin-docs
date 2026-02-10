@@ -2,46 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://manual.seaticket.ai/main/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/administration/account_management/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/administration/backup_restore/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/administration/clean_database/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/administration/overview/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/configuration/environment_variables/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/overview/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seadb_cluster/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seadb_single/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seaticket_prequisites/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
          <loc>https://manual.seaticket.ai/main/setup/setup_seaticket_single/</loc>
-         <lastmod>2026-02-09</lastmod>
+         <lastmod>2026-02-10</lastmod>
     </url>
 </urlset>
