@@ -6,7 +6,7 @@ FoundationDB is a distributed database designed to handle large volumes of struc
 
 ## Deploy FoundationDB Cluster
 
-This guide uses a three-node FoundationDB setup as an example `cluster-fdb1(192.168.0.10), cluster-fdb2(192.168.0.11), cluster-fdb3(192.168.0.12)`. Each node runs two fdbserver processes, and each fdbserver process uses its own dedicated SSD data disk (`/fdb1` and `/fdb2`). Unless otherwise specified, the following steps should be performed on all three nodes. For more information, please refer to the [official documentation](https://apple.github.io/foundationdb/building-cluster.html?wework_cfm_code=N62oKwB0BwL1eIEfRQ9gi2JYDKFJ2GVPsa4FeatkT5iEMS5q30ZBfJXubqhrhrPzBj07eBXsZFkcrCwzIDbgR4x13xzFY7o2zieAtTi5VZHWQn8SBMg2YjrV2X1If2DQiA%3D%3D).
+This guide uses a three-node FoundationDB`(v7.3.63)` setup as an example `cluster-fdb1(192.168.0.10), cluster-fdb2(192.168.0.11), cluster-fdb3(192.168.0.12)`. Each node runs two fdbserver processes, and each fdbserver process uses its own dedicated SSD data disk (`/fdb1` and `/fdb2`). Unless otherwise specified, the following steps should be performed on all three nodes. For more information, please refer to the [official documentation](https://apple.github.io/foundationdb/building-cluster.html?wework_cfm_code=N62oKwB0BwL1eIEfRQ9gi2JYDKFJ2GVPsa4FeatkT5iEMS5q30ZBfJXubqhrhrPzBj07eBXsZFkcrCwzIDbgR4x13xzFY7o2zieAtTi5VZHWQn8SBMg2YjrV2X1If2DQiA%3D%3D).
 
 ### FoundationDB Installation
 

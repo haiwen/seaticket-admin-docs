@@ -6,23 +6,62 @@ FoundationDB is a distributed database designed to handle large volumes of struc
 
 ## Deploy FoundationDB
 
-Please refer to the [official documentation](https://apple.github.io/foundationdb/getting-started-mac.html) to deploy FoundationDB.
+For non-production environments, FoundationDB`(v7.3.63)` can be deployed as a single-node instance using Docker. For installation-package deployments, please refer to the [official documentation](https://apple.github.io/foundationdb/getting-started-linux.html).
+
+### Download and modify `.env`
+
+```shell
+mkdir -p /opt/seadb
+cd /opt/seadb
+
+wget -O .env https://manual.seaticket.ai/main/repo/docker/seadb/env
+wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.yml
+wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.cluster
+
+vim .env
+```
+
+Modify `COMPOSE_FILE='seadb.yml'` to `COMPOSE_FILE='fdb.yml'` in the `.env` file.
+
+```shell
+COMPOSE_FILE='fdb.yml'
+```
+
+### Initialize FoundationDB
+
+```shell
+# Start the FoundationDB service
+docker compose up -d
+
+# Enter the fdb container
+docker exec -it fdb bash
+
+fdbcli
+# Configure the ssd-2 storage engine
+fdb> configure new single ssd
+fdb> configure storage_migration_type=aggressive
+fdb> configure ssd
+
+# Check the fdb status
+fdb> status
+```
 
 ## Deploy SeaDB
 
 ### Download and modify `.env`
 
-To deploy SeaDB with Docker, you have to `.env`, `seadb.yml` and `fdb.cluster` in a directory (e.g., `/opt/seadb`):
-
 ```bash
-mkdir /opt/seadb
 cd /opt/seadb
 
-wget -O .env https://manual.seaticket.ai/main/repo/docker/seadb/env
 wget https://manual.seaticket.ai/main/repo/docker/seadb/seadb.yml
-wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.cluster
 
 vim .env
+```
+
+Modify `COMPOSE_FILE='fdb.yml'` to `COMPOSE_FILE='fdb.yml,seadb.yml'` in the `.env` file.
+
+```shell
+COMPOSE_FILE='fdb.yml,seadb.yml'
 ```
 
 The following fields merit particular attention:
@@ -33,12 +72,6 @@ The following fields merit particular attention:
 | `SEADB_VOLUME`                | The volume directory of SeaDB data                                                                          | `/opt/seadb-data`             |  
 | `FDB_VOLUME`          | The volume directory of FoundationDB data                                                                            | `/opt/fdb-data`         |  
 | `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
-
-Modify `fdb.cluster`, the content should copy from the `/etc/foundationdb/fdb.cluster` file in the FoundationDB node:
-
-```bash
-vim fdb.cluster
-```
 
 ### Start SeaDB
 
