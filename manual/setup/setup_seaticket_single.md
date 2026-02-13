@@ -14,7 +14,7 @@
 
 ### Preparing seaticket_db
 
-Before starting SeaTicket, you need to create a MySQL user (this manual uses `seaticket` as an example, which is also the default value in the configuration) and a database for SeaTicket server (this manual uses `seaticket_db` as an example, which is also the default value in the configuration).
+Before starting SeaTicket, you need to create a MySQL user (`seaticket` as the example in this manual) and a database for SeaTicket server (`seaticket_db` as the example in this manual).
 
 Copy `mysql.sql` file to the host `/tmp` directory:
 
