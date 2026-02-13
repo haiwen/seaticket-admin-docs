@@ -1,5 +1,0 @@
-COMPOSE_FILE='mysql.yml'
-COMPOSE_PATH_SEPARATOR=','
-
-# system settings
-TIME_ZONE=UTC
