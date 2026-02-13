@@ -13,13 +13,13 @@ SEATICKET_SERVER_PROTOCOL=http
 
 ## SeaTicket components configuration (JWT_PRIVATE_KEY of SeaDB should be the same as SeaTicket)
 SEADB_SERVER_URL=
+SEADB_SERVER_ACCESS_TOEKN=
 
 ## Database (MySQL)
 SEAQA_MYSQL_DB_HOST=
 SEAQA_MYSQL_DB_PORT=3306
 SEAQA_MYSQL_DB_USER=seaticket
 SEAQA_MYSQL_DB_PASSWORD=
-SEAQA_MYSQL_SEAQA_DB_NAME=seaticket_db
 
 ## Redis
 REDIS_HOST=

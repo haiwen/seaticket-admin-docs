@@ -12,12 +12,13 @@ The `.env` file will be used to specify the general settings of the components u
 | Variable                        | Description                                                                                                   | Default Value                   |  
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `SEADB_SERVER_URL`              | SeaDB server URL                                                                                              | `http://seadb`                  |
+| `SEADB_SERVER_ACCESS_TOEKN`     | Access token for SeaDB server                                                                                 | (required)                      |
 
 ## SeaSearch Settings
 | Variable                        | Description                                                                                                   | Default Value                   |  
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `SEASEARCH_URL`                 | Your SeaSearch server API endpoint url, e.g., `http://<your seasearch host>:4080`                             | (required)                      |
-| `seasearch_token`               | Your authorization token for accessing SeaSearch API, which can be constructed in `echo -n '<your_seasearch_username>:<your_seasearch_password>' | base64` | (required)                      |
+| `SEASEARCH_TOKEN`               | Your authorization token for accessing SeaSearch API, which can be constructed in `echo -n '<your_seasearch_username>:<your_seasearch_password>' | base64` | (required)                      |
 
 ## Mysql Settings
 | Variable                        | Description                                                                                                   | Default Value                   |  
@@ -26,7 +27,6 @@ The `.env` file will be used to specify the general settings of the components u
 | `SEAQA_MYSQL_DB_PORT`           | The port of MySQL server                                                                                      | `3306`                          |
 | `SEAQA_MYSQL_DB_USER`           | The user for accessing MySQL server                                                                           | `seaticket`                     |
 | `SEAQA_MYSQL_DB_PASSWORD`       | The password of MySQL server                                                                                  | (none)                          |
-| `SEAQA_MYSQL_SEAQA_DB_NAME`     | The database used for SeaTicket server                                                                        | `seaticket_db`                  |
 
 ## Redis Settings
 | Variable                        | Description                                                                                                   | Default Value                   |  
