@@ -11,7 +11,7 @@ services:
     environment:
       - SEAQA_LOG_TO_STDOUT=${LOG_TO_STDOUT:-false}
       - TZ=${TIME_ZONE:-}
-      - SEADB_SERVER_ACCESS_TOEKN=${SEADB_SERVER_ACCESS_TOEKN:?Variable is not set or empty}
+      - JWT_PRIVATE_KEY=${SEADB_SERVER_ACCESS_TOEKN:?Variable is not set or empty}
     networks:
       - backend-net
     healthcheck:
