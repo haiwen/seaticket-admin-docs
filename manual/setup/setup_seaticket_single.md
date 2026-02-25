@@ -2,21 +2,19 @@
 
 ## Getting started
 
-The following assumptions and conventions are used in the rest of this document:
+!!! tip "The following assumptions and conventions are used in the rest of this document"
+    - `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
+    - SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/caddy-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
+    - All configuration and log files for SeaTicket are stored in the volume of the SeaTicket container.
+    - SeaTicket contains following components, each packaged as a separate docker image:
+        - Caddy and seaqa-web
+        - seaqa-ai
+        - seaqa-events
+        - seaqa-indexer
 
-- `/opt/seaticket` is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.
-- SeaTicket uses some [Docker volumes](https://docs.docker.com/storage/volumes/) for persisting data generated in its database and SeaTicket Docker container. The volumes' [host paths](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) like `/opt/caddy-data` and `/opt/seaticket-data`, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.
-- All configuration and log files for SeaTicket are stored in the volume of the SeaTicket container.
-- SeaTicket contains following components, each packaged as a separate docker image:
-    - Caddy and seaqa-web
-    - seaqa-ai
-    - seaqa-events
-    - seaqa-indexer
+### Preparing seaticket_db
 
-
-## Preparing seaticket_db
-
-Before starting SeaTicket, you need to create MySQL user `seaticket` and create the database `seaticket_db`.
+Before starting SeaTicket, you need to create a MySQL user (`seaticket` as the example in this manual) and a database for SeaTicket server (`seaticket_db` as the example in this manual).
 
 Copy `mysql.sql` file to the host `/tmp` directory:
 
@@ -39,7 +37,7 @@ USE seaticket_db;
 SOURCE /tmp/mysql.sql;
 ```
 
-## Download and modify `.env`, `config.yml`
+### Download resource files
 
 To deploy SeaTicket with Docker, you have to `.env`, `caddy.yml`, `seaqa-web.yml`, `seaqa-indexer.yml`, `seaqa-ai.yml`, `seaqa-events.yml`, and `config.yml` in a directory (e.g., `/opt/seaticket`):
 
@@ -54,47 +52,39 @@ wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-web.yml
 wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-indexer.yml
 wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-ai.yml
 wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-events.yml
-
-vim .env
 ```
 
-The following fields merit particular attention:
-
-| Variable                        | Description                                                                                                   | Default Value                   |  
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |  
-| `SEATICKET_VOLUME`                | The volume directory of SeaTicket data                                                                          | `/opt/seaticket-data`             |  
-| `CADDY_VOLUME`          | The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's                    | `/opt/caddy-data`            |  
-| `SEATICKET_SERVER_HOSTNAME`       | SeaTicket server hostname or domain                                                                  | (required)  |  
-| `SEATICKET_SERVER_PROTOCOL`       | SeaTicket server protocol (http or https)                                                                       | `http` |
-| `TIME_ZONE`                     | Time zone                                                                                                     | `UTC`                           |
-
-And modify `config.yml`:
-
-Note: `JWT_PRIVATE_KEY` is the same as the one in SeaDB `.env` file. Refer to [SeaSearch manual](https://seasearch-manual.seafile.com/latest/usage/use_and_access_seasearch_apis/#get-auth-token) for `SEASEARCH_TOKEN`.
+### Modify .env
 
 The following fields merit particular attention:
 
 | Variable                        | Description                                                                                                   | Default Value                   |  
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |  
-| `SEAQA_MYSQL_DB_HOST`         | The host of MySQL | (required)  | 
-| `SEAQA_MYSQL_DB_PORT`         | The port of MySQL | `3306`  | 
-| `SEAQA_MYSQL_DB_USER`         | The user of MySQL |`seaticket`  |  
-| `SEAQA_MYSQL_DB_PASSWORD`     | The user `seaticket` password of MySQL                                                                          | (required)  |  
-| `SEAQA_MYSQL_SEAQA_DB_NAME`     | The database name of seaticket | `seaticket_db`  |
-| `JWT_PRIVATE_KEY`                           | JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for SeaTicket, which can be generated by using `pwgen -s 40 1` | (required) |  
-| `REDIS_HOST`       | Redis server host | (required) |
-| `REDIS_PORT`       | Redis server port | `6379` |
-| `REDIS_PASSWORD`       | Redis server password | (required) |
-| `S3_HOST`       | Host of your buckets | (required when not use AWS) |
-| `S3_FILE_BUCKET`       | S3 bucket for files | (required) |
-| `S3_WEB_CRAWL_BUCKET`       | S3 bucket for crawled web pages | (required) |
-| `S3_KEY_ID`       | S3 storage key ID | (required) |
-| `S3_SECRET_KEY`       | S3 storage secret key | (required) |
-| `SEASEARCH_URL`       | SeaSearch url | http://[SeaSearch host]:4080|
-| `SEASEARCH_TOKEN`       | SeaSearch token | (required) |
-| `SEADB_INNER_SERVER_URL`       | SeaDB inner url | http://[SeaDB host]:8888|
-| `SEAQA_AI_INNER_SERVER_URL`       | seaqa-ai inner url | http://[seaqa-ai host]:8887|
-| `SEAQA_INDEXER_INNER_SERVER_URL`       | seaqa-indexer inner url | http://[seaqa-indexer host]:8888|
+| `SEATICKET_SERVER_PROTOCOL`     | SeaTicket server protocol (http or https)                                                                     | `http`                          |
+| `SEATICKET_SERVER_HOSTNAME`     | Seafile server hostname or domain                                                                             | (required)                      |
+| `JWT_PRIVATE_KEY`               | JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for Seafile, which can be generated by using `pwgen -s 40 1` | (required)                  |
+| `SEADB_SERVER_URL`              | SeaDB server URL                                                                                              | `http://seadb`                  |
+| `SEADB_SERVER_ACCESS_TOEKN`     | Access token for SeaDB server, should be the same as the value in the `.env` for deploying SeaDB              | (required)                      |
+| `SEASEARCH_URL`                 | Your SeaSearch server API endpoint url, e.g., `http://<your seasearch host>:4080`                             | (required)                      |
+| `SEASEARCH_TOKEN`               | Your authorization token for accessing SeaSearch API, which can be constructed in `echo -n '<your_seasearch_username>:<your_seasearch_password>' | base64` | (required)                      |
+| `SEAQA_MYSQL_DB_HOST`           | The host of MySQL server                                                                                      | (required)                      |
+| `SEAQA_MYSQL_DB_PORT`           | The port of MySQL server                                                                                      | `3306`                          |
+| `SEAQA_MYSQL_DB_USER`           | The user for accessing MySQL server                                                                           | `seaticket`                     |
+| `SEAQA_MYSQL_DB_PASSWORD`       | The password of MySQL server                                                                                  | (none)                          |
+| `REDIS_HOST`                    | The host of Redis server                                                                                      | (required)                      |
+| `REDIS_PORT`                    | The port of Redis server                                                                                      | `6379`                          |
+| `REDIS_PASSWORD`                | The password of Redis server                                                                                  | (none)                          |
+| `S3_HOST`                       | S3 storage backend API endpoint URL (e.g., `https://s3-endpoint.example.com`. For AWS S3, the `S3_HOST` can be set from `https://s3.<region>.amazonaws.com`) | (required)                      |
+| `S3_KEY_ID`                     | S3 storage backend key ID                                                                                     | (required)                      |
+| `S3_SECRET_KEY`                 | S3 storage backend secret key                                                                                 | (required)                      |
+| `S3_FILE_BUCKET`                | Name of the bucket for saving upload files                                                                    | (required)                      |
+| `S3_WEB_CRAWL_BUCKET`           | Name of the bucket for saving web-crawl data                                                                  | (required)                      |
+| `SEAQA_LOG_TO_STDOUT`           | Record logs to container standard output                                                                      | `false`                         |
+| `TIME_ZONE`                     | Timezone of SeaTicket server                                                                                  | `UTC`                      |
+
+### Modify `config.yml` and add LLM models configuration
+
+Please refer [here](../configuration/config_yaml.md) for the details.
 
 ## Start SeaTicket server
 

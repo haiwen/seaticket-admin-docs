@@ -4,6 +4,35 @@ COMPOSE_PATH_SEPARATOR=','
 # system settings
 TIME_ZONE=UTC
 
-# seaticket server url
+# SeaTicket server configuration
+JWT_PRIVATE_KEY=
 SEATICKET_SERVER_HOSTNAME=
 SEATICKET_SERVER_PROTOCOL=http
+
+# Non-SeaTicket components configuration
+
+## SeaTicket components configuration (JWT_PRIVATE_KEY of SeaDB should be the same as SeaTicket)
+SEADB_SERVER_URL=
+SEADB_SERVER_ACCESS_TOEKN=
+
+## Database (MySQL)
+SEAQA_MYSQL_DB_HOST=
+SEAQA_MYSQL_DB_PORT=3306
+SEAQA_MYSQL_DB_USER=seaticket
+SEAQA_MYSQL_DB_PASSWORD=
+
+## Redis
+REDIS_HOST=
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+## S3
+S3_HOST=
+S3_FILE_BUCKET=
+S3_WEB_CRAWL_BUCKET=
+S3_KEY_ID=
+S3_SECRET_KEY=
+
+## SeaSearch
+SEASEARCH_URL=
+SEASEARCH_TOKEN=
