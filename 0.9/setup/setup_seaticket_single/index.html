@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../media/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -745,9 +745,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#preparing-seaticket_db" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -757,15 +758,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#download-and-modify-env-configyml" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#download-resource-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Download and modify .env, config.yml
+        Download resource files
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-configyml-and-add-llm-models-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify config.yml and add LLM models configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -943,6 +971,34 @@
     
   
     Environment Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/config_yaml.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    seaticket.yaml
   
 
     
@@ -1141,9 +1197,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#preparing-seaticket_db" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1153,15 +1210,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#download-and-modify-env-configyml" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#download-resource-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Download and modify .env, config.yml
+        Download resource files
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify .env
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-configyml-and-add-llm-models-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modify config.yml and add LLM models configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1270,7 +1354,8 @@
 
 <h1 id="setup-seaticket-server">Setup SeaTicket Server<a class="headerlink" href="#setup-seaticket-server" title="Permanent link">&para;</a></h1>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>The following assumptions and conventions are used in the rest of this document:</p>
+<div class="admonition tip">
+<p class="admonition-title">The following assumptions and conventions are used in the rest of this document</p>
 <ul>
 <li><code>/opt/seaticket</code> is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.</li>
 <li>SeaTicket uses some <a href="https://docs.docker.com/storage/volumes/">Docker volumes</a> for persisting data generated in its database and SeaTicket Docker container. The volumes' <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">host paths</a> like <code>/opt/caddy-data</code> and <code>/opt/seaticket-data</code>, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.</li>
@@ -1283,8 +1368,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h2>
-<p>Before starting SeaTicket, you need to create MySQL user <code>seaticket</code> and create the database <code>seaticket_db</code>.</p>
+</div>
+<h3 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h3>
+<p>Before starting SeaTicket, you need to create a MySQL user (<code>seaticket</code> as the example in this manual) and a database for SeaTicket server (<code>seaticket_db</code> as the example in this manual).</p>
 <p>Copy <code>mysql.sql</code> file to the host <code>/tmp</code> directory:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/tmp:/shared<span class="w"> </span>seaticket/seaqa-web:1.0-latest<span class="w"> </span>cp<span class="w"> </span>/opt/seaticket/seaqa-web/sql/mysql.sql<span class="w"> </span>/shared
 </code></pre></div>
@@ -1300,7 +1386,7 @@ FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
 USE<span class="w"> </span>seaticket_db<span class="p">;</span>
 SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 </code></pre></div>
-<h2 id="download-and-modify-env-configyml">Download and modify <code>.env</code>, <code>config.yml</code><a class="headerlink" href="#download-and-modify-env-configyml" title="Permanent link">&para;</a></h2>
+<h3 id="download-resource-files">Download resource files<a class="headerlink" href="#download-resource-files" title="Permanent link">&para;</a></h3>
 <p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>config.yml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
@@ -1312,9 +1398,8 @@ wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seatick
 wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-indexer.yml
 wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-ai.yml
 wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-events.yml
-
-vim<span class="w"> </span>.env
 </code></pre></div>
+<h3 id="modify-env">Modify .env<a class="headerlink" href="#modify-env" title="Permanent link">&para;</a></h3>
 <p>The following fields merit particular attention:</p>
 <table>
 <thead>
@@ -1325,142 +1410,115 @@ vim<span class="w"> </span>.env
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>SEATICKET_VOLUME</code></td>
-<td>The volume directory of SeaTicket data</td>
-<td><code>/opt/seaticket-data</code></td>
-</tr>
-<tr>
-<td><code>CADDY_VOLUME</code></td>
-<td>The volume directory of Caddy data used to store certificates obtained from Let's Encrypt's</td>
-<td><code>/opt/caddy-data</code></td>
-</tr>
-<tr>
-<td><code>SEATICKET_SERVER_HOSTNAME</code></td>
-<td>SeaTicket server hostname or domain</td>
-<td>(required)</td>
-</tr>
 <tr>
 <td><code>SEATICKET_SERVER_PROTOCOL</code></td>
 <td>SeaTicket server protocol (http or https)</td>
 <td><code>http</code></td>
 </tr>
 <tr>
-<td><code>TIME_ZONE</code></td>
-<td>Time zone</td>
-<td><code>UTC</code></td>
-</tr>
-</tbody>
-</table>
-<p>And modify <code>config.yml</code>:</p>
-<p>Note: <code>JWT_PRIVATE_KEY</code> is the same as the one in SeaDB <code>.env</code> file. Refer to <a href="https://seasearch-manual.seafile.com/latest/usage/use_and_access_seasearch_apis/#get-auth-token">SeaSearch manual</a> for <code>SEASEARCH_TOKEN</code>.</p>
-<p>The following fields merit particular attention:</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SEAQA_MYSQL_DB_HOST</code></td>
-<td>The host of MySQL</td>
+<td><code>SEATICKET_SERVER_HOSTNAME</code></td>
+<td>Seafile server hostname or domain</td>
 <td>(required)</td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_PORT</code></td>
-<td>The port of MySQL</td>
-<td><code>3306</code></td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_USER</code></td>
-<td>The user of MySQL</td>
-<td><code>seaticket</code></td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_PASSWORD</code></td>
-<td>The user <code>seaticket</code> password of MySQL</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_SEAQA_DB_NAME</code></td>
-<td>The database name of seaticket</td>
-<td><code>seaticket_db</code></td>
 </tr>
 <tr>
 <td><code>JWT_PRIVATE_KEY</code></td>
-<td>JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for SeaTicket, which can be generated by using <code>pwgen -s 40 1</code></td>
+<td>JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for Seafile, which can be generated by using <code>pwgen -s 40 1</code></td>
 <td>(required)</td>
 </tr>
 <tr>
-<td><code>REDIS_HOST</code></td>
-<td>Redis server host</td>
-<td>(required)</td>
+<td><code>SEADB_SERVER_URL</code></td>
+<td>SeaDB server URL</td>
+<td><code>http://seadb</code></td>
 </tr>
 <tr>
-<td><code>REDIS_PORT</code></td>
-<td>Redis server port</td>
-<td><code>6379</code></td>
-</tr>
-<tr>
-<td><code>REDIS_PASSWORD</code></td>
-<td>Redis server password</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_HOST</code></td>
-<td>Host of your buckets</td>
-<td>(required when not use AWS)</td>
-</tr>
-<tr>
-<td><code>S3_FILE_BUCKET</code></td>
-<td>S3 bucket for files</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_WEB_CRAWL_BUCKET</code></td>
-<td>S3 bucket for crawled web pages</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_KEY_ID</code></td>
-<td>S3 storage key ID</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_SECRET_KEY</code></td>
-<td>S3 storage secret key</td>
+<td><code>SEADB_SERVER_ACCESS_TOEKN</code></td>
+<td>Access token for SeaDB server, should be the same as the value in the <code>.env</code> for deploying SeaDB</td>
 <td>(required)</td>
 </tr>
 <tr>
 <td><code>SEASEARCH_URL</code></td>
-<td>SeaSearch url</td>
-<td>http://[SeaSearch host]:4080</td>
-</tr>
-<tr>
-<td><code>SEASEARCH_TOKEN</code></td>
-<td>SeaSearch token</td>
+<td>Your SeaSearch server API endpoint url, e.g., <code>http://&lt;your seasearch host&gt;:4080</code></td>
 <td>(required)</td>
 </tr>
 <tr>
-<td><code>SEADB_INNER_SERVER_URL</code></td>
-<td>SeaDB inner url</td>
-<td>http://[SeaDB host]:8888</td>
+<td><code>SEASEARCH_TOKEN</code></td>
+<td>Your authorization token for accessing SeaSearch API, which can be constructed in <code>echo -n '&lt;your_seasearch_username&gt;:&lt;your_seasearch_password&gt;' | base64</code></td>
+<td>(required)</td>
 </tr>
 <tr>
-<td><code>SEAQA_AI_INNER_SERVER_URL</code></td>
-<td>seaqa-ai inner url</td>
-<td>http://[seaqa-ai host]:8887</td>
+<td><code>SEAQA_MYSQL_DB_HOST</code></td>
+<td>The host of MySQL server</td>
+<td>(required)</td>
 </tr>
 <tr>
-<td><code>SEAQA_INDEXER_INNER_SERVER_URL</code></td>
-<td>seaqa-indexer inner url</td>
-<td>http://[seaqa-indexer host]:8888</td>
+<td><code>SEAQA_MYSQL_DB_PORT</code></td>
+<td>The port of MySQL server</td>
+<td><code>3306</code></td>
+</tr>
+<tr>
+<td><code>SEAQA_MYSQL_DB_USER</code></td>
+<td>The user for accessing MySQL server</td>
+<td><code>seaticket</code></td>
+</tr>
+<tr>
+<td><code>SEAQA_MYSQL_DB_PASSWORD</code></td>
+<td>The password of MySQL server</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>REDIS_HOST</code></td>
+<td>The host of Redis server</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>REDIS_PORT</code></td>
+<td>The port of Redis server</td>
+<td><code>6379</code></td>
+</tr>
+<tr>
+<td><code>REDIS_PASSWORD</code></td>
+<td>The password of Redis server</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>S3_HOST</code></td>
+<td>S3 storage backend API endpoint URL (e.g., <code>https://s3-endpoint.example.com</code>. For AWS S3, the <code>S3_HOST</code> can be set from <code>https://s3.&lt;region&gt;.amazonaws.com</code>)</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_KEY_ID</code></td>
+<td>S3 storage backend key ID</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_SECRET_KEY</code></td>
+<td>S3 storage backend secret key</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_FILE_BUCKET</code></td>
+<td>Name of the bucket for saving upload files</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>S3_WEB_CRAWL_BUCKET</code></td>
+<td>Name of the bucket for saving web-crawl data</td>
+<td>(required)</td>
+</tr>
+<tr>
+<td><code>SEAQA_LOG_TO_STDOUT</code></td>
+<td>Record logs to container standard output</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>TIME_ZONE</code></td>
+<td>Timezone of SeaTicket server</td>
+<td><code>UTC</code></td>
 </tr>
 </tbody>
 </table>
+<h3 id="modify-configyml-and-add-llm-models-configuration">Modify <code>config.yml</code> and add LLM models configuration<a class="headerlink" href="#modify-configyml-and-add-llm-models-configuration" title="Permanent link">&para;</a></h3>
+<p>Please refer <a href="../configuration/config_yaml.md">here</a> for the details.</p>
 <h2 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h2>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
 <div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;caddy.yml,seaqa-web.yml&#39;
