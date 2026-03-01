@@ -1353,22 +1353,18 @@
 
 
 <h1 id="setup-seaticket-server">Setup SeaTicket Server<a class="headerlink" href="#setup-seaticket-server" title="Permanent link">&para;</a></h1>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">The following assumptions and conventions are used in the rest of this document</p>
+<p>The following assumptions and conventions are used in the rest of this document</p>
 <ul>
 <li><code>/opt/seaticket</code> is the directory for store SeaTicket docker compose files. If you decide to put SeaTicket in a different directory — which you can — adjust all paths accordingly.</li>
 <li>SeaTicket uses some <a href="https://docs.docker.com/storage/volumes/">Docker volumes</a> for persisting data generated in its database and SeaTicket Docker container. The volumes' <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">host paths</a> like <code>/opt/caddy-data</code> and <code>/opt/seaticket-data</code>, respectively. It is not recommended to change these paths. If you do, account for it when following these instructions.</li>
 <li>All configuration and log files for SeaTicket are stored in the volume of the SeaTicket container.</li>
-<li>SeaTicket contains following components, each packaged as a separate docker image:<ul>
+<li>SeaTicket contains following components, each packaged as a separate docker image:</li>
 <li>Caddy and seaqa-web</li>
 <li>seaqa-ai</li>
 <li>seaqa-events</li>
 <li>seaqa-indexer</li>
 </ul>
-</li>
-</ul>
-</div>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="preparing-seaticket_db">Preparing seaticket_db<a class="headerlink" href="#preparing-seaticket_db" title="Permanent link">&para;</a></h3>
 <p>Before starting SeaTicket, you need to create a MySQL user (<code>seaticket</code> as the example in this manual) and a database for SeaTicket server (<code>seaticket_db</code> as the example in this manual).</p>
 <p>Copy <code>mysql.sql</code> file to the host <code>/tmp</code> directory:</p>
