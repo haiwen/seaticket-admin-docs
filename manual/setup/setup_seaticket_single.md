@@ -46,13 +46,13 @@ To deploy SeaTicket with Docker, you have to `.env`, `caddy.yml`, `seaqa-web.yml
 mkdir /opt/seaticket
 cd /opt/seaticket
 
-wget -O .env https://manual.seaticket.ai/main/repo/docker/seaticket/env
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/config.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/caddy.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-web.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-indexer.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-ai.yml
-wget https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-events.yml
+wget -O .env https://manual.seaticket.ai/latest/repo/docker/seaticket/env
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/config.yml
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/caddy.yml
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-web.yml
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-indexer.yml
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-ai.yml
+wget https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-events.yml
 ```
 
 ### Modify .env
@@ -85,7 +85,7 @@ The following fields merit particular attention:
 
 ### Modify `config.yml` and add LLM models configuration
 
-Please refer [here](../configuration/config_yaml.md) for the details.
+Please refer [here](../configuration/seaticket_yaml.md) for the details.
 
 ## Start SeaTicket server
 
