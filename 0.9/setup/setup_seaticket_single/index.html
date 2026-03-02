@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/config_yaml.md" class="md-nav__link">
+      <a href="../../configuration/seaticket_yaml/" class="md-nav__link">
         
   
   
@@ -1387,13 +1387,13 @@ SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
 
-wget<span class="w"> </span>-O<span class="w"> </span>.env<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/env
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/config.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/caddy.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-web.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-indexer.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-ai.yml
-wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seaticket/seaqa-events.yml
+wget<span class="w"> </span>-O<span class="w"> </span>.env<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/env
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/config.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/caddy.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-web.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-indexer.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-ai.yml
+wget<span class="w"> </span>https://manual.seaticket.ai/latest/repo/docker/seaticket/seaqa-events.yml
 </code></pre></div>
 <h3 id="modify-env">Modify .env<a class="headerlink" href="#modify-env" title="Permanent link">&para;</a></h3>
 <p>The following fields merit particular attention:</p>
@@ -1514,7 +1514,7 @@ wget<span class="w"> </span>https://manual.seaticket.ai/main/repo/docker/seatick
 </tbody>
 </table>
 <h3 id="modify-configyml-and-add-llm-models-configuration">Modify <code>config.yml</code> and add LLM models configuration<a class="headerlink" href="#modify-configyml-and-add-llm-models-configuration" title="Permanent link">&para;</a></h3>
-<p>Please refer <a href="../configuration/config_yaml.md">here</a> for the details.</p>
+<p>Please refer <a href="../../configuration/seaticket_yaml/">here</a> for the details.</p>
 <h2 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h2>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
 <div class="highlight"><pre><span></span><code>COMPOSE_FILE=&#39;caddy.yml,seaqa-web.yml&#39;
