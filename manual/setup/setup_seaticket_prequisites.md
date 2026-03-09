@@ -16,7 +16,7 @@ Please refer to [Deploy Redis](https://redis.io/docs/latest/get-started/) for mo
 
 Please refer to [Deploy MySQL](https://dev.mysql.com/doc/refman/8.4/en/installing.html) for more details.
 
-## Prepair S3 storage
+## Prepare S3 storage
 
 You need to create three buckets on S3 storage provider for storing files, crawled web pages and SeaSearch.
 

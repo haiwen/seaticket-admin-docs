@@ -173,9 +173,9 @@ To deploy SeaDB with Docker, you need to download `.env`, `seadb.yml` and `fdb.c
 mkdir /opt/seadb
 cd /opt/seadb
 
-wget -O .env https://manual.seaticket.ai/main/repo/docker/seadb/env
-wget https://manual.seaticket.ai/main/repo/docker/seadb/seadb.yml
-wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.cluster
+wget -O .env https://manual.seaticket.ai/0.9/repo/docker/seadb/env
+wget https://manual.seaticket.ai/0.9/repo/docker/seadb/seadb.yml
+wget https://manual.seaticket.ai/0.9/repo/docker/seadb/fdb.cluster
 
 vim .env
 ```

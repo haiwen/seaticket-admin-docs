@@ -14,9 +14,9 @@ For non-production environments, FoundationDB`(v7.3.63)` can be deployed as a si
 mkdir -p /opt/seadb
 cd /opt/seadb
 
-wget -O .env https://manual.seaticket.ai/main/repo/docker/seadb/env
-wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.yml
-wget https://manual.seaticket.ai/main/repo/docker/seadb/fdb.cluster
+wget -O .env https://manual.seaticket.ai/0.9/repo/docker/seadb/env
+wget https://manual.seaticket.ai/0.9/repo/docker/seadb/fdb.yml
+wget https://manual.seaticket.ai/0.9/repo/docker/seadb/fdb.cluster
 
 vim .env
 ```
@@ -53,7 +53,7 @@ fdb> status
 ```bash
 cd /opt/seadb
 
-wget https://manual.seaticket.ai/main/repo/docker/seadb/seadb.yml
+wget https://manual.seaticket.ai/0.9/repo/docker/seadb/seadb.yml
 
 vim .env
 ```
