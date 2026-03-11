@@ -866,12 +866,12 @@
   <a href="#global-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        global settings
+        Global settings
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="global settings">
+    <nav class="md-nav" aria-label="Global settings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -930,10 +930,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#special-settings-for-seaqa-ai" class="md-nav__link">
+  <a href="#seaqa-ai-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Special settings for SeaQA-AI
+        seaqa-ai settings
       
     </span>
   </a>
@@ -941,10 +941,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#special-settings-for-seaqa-events" class="md-nav__link">
+  <a href="#seaqa-events-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Special settings for SeaQA-Events
+        seaqa-events settings
       
     </span>
   </a>
@@ -1151,12 +1151,12 @@
   <a href="#global-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        global settings
+        Global settings
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="global settings">
+    <nav class="md-nav" aria-label="Global settings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1215,10 +1215,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#special-settings-for-seaqa-ai" class="md-nav__link">
+  <a href="#seaqa-ai-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Special settings for SeaQA-AI
+        seaqa-ai settings
       
     </span>
   </a>
@@ -1226,10 +1226,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#special-settings-for-seaqa-events" class="md-nav__link">
+  <a href="#seaqa-events-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Special settings for SeaQA-Events
+        seaqa-events settings
       
     </span>
   </a>
@@ -1271,7 +1271,7 @@
 <span class="nt">seaqa-web</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ... special configurations for seaqa-web</span>
 </code></pre></div>
-<h2 id="global-settings">global settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h2>
+<h2 id="global-settings">Global settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h2>
 <p>The global section is generally used to specify configuration items that are common to all SeaTickets components.</p>
 <h3 id="internal-server-urls-used-for-communication-between-seaticket-components-cluster-only">Internal server URLs used for communication between SeaTicket components (cluster only)<a class="headerlink" href="#internal-server-urls-used-for-communication-between-seaticket-components-cluster-only" title="Permanent link">&para;</a></h3>
 <p>In cluster mode, you need to specify the URLs used for internal communication between components via <code>seaticket.yaml</code>:</p>
@@ -1405,7 +1405,7 @@
 <span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">embedding_model_secret_key</span><span class="w"> </span><span class="c1"># required for non-self deployment LLM server (including OpenAI-proxy)</span>
 <span class="w">    </span><span class="nt">price</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.00002</span><span class="w"> </span><span class="c1"># dollars / 1K input tokens, required only need to specify this when you need to track user token usage.</span>
 </code></pre></div>
-<h2 id="special-settings-for-seaqa-ai">Special settings for SeaQA-AI<a class="headerlink" href="#special-settings-for-seaqa-ai" title="Permanent link">&para;</a></h2>
+<h2 id="seaqa-ai-settings">seaqa-ai settings<a class="headerlink" href="#seaqa-ai-settings" title="Permanent link">&para;</a></h2>
 <p>The following are the default values, normally, you don't need to make any additional settings for this part</p>
 <div class="highlight"><pre><span></span><code><span class="nt">seaqa-ai</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">THOUGHT_PROCESS</span><span class="p">:</span><span class="w"> </span><span class="c1"># Configure which content to record in the thought process.</span>
@@ -1421,7 +1421,7 @@
 <span class="w">    </span><span class="nt">generate_summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">low</span>
 <span class="w">    </span><span class="nt">rerank_relevance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
 </code></pre></div>
-<h2 id="special-settings-for-seaqa-events">Special settings for SeaQA-Events<a class="headerlink" href="#special-settings-for-seaqa-events" title="Permanent link">&para;</a></h2>
+<h2 id="seaqa-events-settings">seaqa-events settings<a class="headerlink" href="#seaqa-events-settings" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">seaqa-events</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">AI_STATS</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Enable AI tokens usage statistics (default is `true`)</span>
