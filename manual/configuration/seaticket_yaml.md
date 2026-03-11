@@ -19,7 +19,7 @@ seaqa-web:
   # ... special configurations for seaqa-web
 ```
 
-## global settings
+## Global settings
 
 The global section is generally used to specify configuration items that are common to all SeaTickets components.
 
@@ -179,7 +179,7 @@ global:
     price: 0.00002 # dollars / 1K input tokens, required only need to specify this when you need to track user token usage.
 ```
 
-## Special settings for SeaQA-AI
+## seaqa-ai settings
 
 The following are the default values, normally, you don't need to make any additional settings for this part
 
@@ -199,7 +199,7 @@ seaqa-ai:
     rerank_relevance: medium
 ```
 
-## Special settings for SeaQA-Events
+## seaqa-events settings
 
 ```yaml
 seaqa-events:
