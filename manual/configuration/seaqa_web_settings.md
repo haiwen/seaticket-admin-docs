@@ -1,9 +1,7 @@
 # seaqa_web_settings.py
 
-`seaqa_web_settings.py` is used to customize the SeaTicket web (seaqa-web) runtime settings. The file is loaded when SeaTicket starts, and values defined here override the defaults inside the SeaTicket codebase.
+`seaqa_web_settings.py` is used to customize the SeaTicket web (seaqa-web) settings.
 
-!!! tip
-    Place `seaqa_web_settings.py` in the SeaTicket configuration directory that is mounted into the `seaqa-web` container (the directory referenced by `CONF_DIR`). Restart SeaTicket after modifying this file.
 
 ## Team role permissions
 
