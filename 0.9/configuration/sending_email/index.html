@@ -10,13 +10,13 @@
         <meta name="author" content="seaticket">
       
       
-        <link rel="canonical" href="https://manual.seaticket.ai/0.9/configuration/environment_variables/">
+        <link rel="canonical" href="https://manual.seaticket.ai/0.9/configuration/sending_email/">
       
       
-        <link rel="prev" href="../../setup/setup_seaticket_single/">
+        <link rel="prev" href="../seaticket_yaml/">
       
       
-        <link rel="next" href="../seaticket_yaml/">
+        <link rel="next" href="../seaqa_web_settings/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Environment Variables - SeaTicket Admin Manual</title>
+        <title>Email Sending - SeaTicket Admin Manual</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#env" class="md-skip">
+        <a href="#email-sending" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Environment Variables
+              Email Sending
             
           </span>
         </div>
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../environment_variables/" class="md-tabs__link">
           
   
   
@@ -761,37 +761,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Environment Variables
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../environment_variables/" class="md-nav__link">
         
   
   
@@ -807,103 +780,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#seaticket-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SeaTicket Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#seadb-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SeaDB settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#seasearch-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SeaSearch Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mysql Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redis-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redis Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#s3-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        S3 Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-system-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced system systems
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -941,10 +817,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sending_email/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Email Sending
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -960,6 +863,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gmail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gmail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brevo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infomaniak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infomaniak
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1170,10 +1165,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#seaticket-settings" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SeaTicket Settings
+        Configuration
       
     </span>
   </a>
@@ -1181,10 +1176,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#seadb-settings" class="md-nav__link">
+  <a href="#debugging" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SeaDB settings
+        Debugging
       
     </span>
   </a>
@@ -1192,57 +1187,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#seasearch-settings" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SeaSearch Settings
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gmail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gmail
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql-settings" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#brevo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mysql Settings
+        Brevo
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#redis-settings" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#infomaniak" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Redis Settings
+        Infomaniak
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#s3-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        S3 Settings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-system-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced system systems
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1266,197 +1256,181 @@
   
 
 
-<h1 id="env">.env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h1>
-<p>The <code>.env</code> file will be used to specify the general settings of the components used by the SeaTicket-docker instance and the environment variables required by each component.</p>
-<h2 id="seaticket-settings">SeaTicket Settings<a class="headerlink" href="#seaticket-settings" title="Permanent link">&para;</a></h2>
+<h1 id="email-sending">Email Sending<a class="headerlink" href="#email-sending" title="Permanent link">&para;</a></h1>
+<p>SeaTicket requires an external SMTP account to send emails. Typical emails include:</p>
+<ul>
+<li>User password resets</li>
+<li>User invitations and registration notices</li>
+<li>System admin adds new members</li>
+<li>System admin resets user password</li>
+</ul>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>There are two ways to configure SMTP for system-wide emails.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Environment variables / seaticket.yaml</label><label for="__tabbed_1_2">Configuration file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>SeaTicket reads SMTP settings from environment variables or <code>seaticket.yaml</code> for <code>seaqa-web</code>.</p>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
+<th>Key</th>
 <th>Description</th>
-<th>Default Value</th>
+<th>Example values</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>SEATICKET_SERVER_PROTOCOL</code></td>
-<td>SeaTicket server protocol (http or https)</td>
-<td><code>http</code></td>
+<td><code>EMAIL_HOST</code></td>
+<td>SMTP server hostname</td>
+<td><code>smtp.example.com</code></td>
 </tr>
 <tr>
-<td><code>SEATICKET_SERVER_HOSTNAME</code></td>
-<td>Seafile server hostname or domain</td>
-<td>(required)</td>
+<td><code>EMAIL_HOST_USER</code></td>
+<td>Username for authentication</td>
+<td><code>username@example.com</code></td>
 </tr>
 <tr>
-<td><code>JWT_PRIVATE_KEY</code></td>
-<td>JWT_PRIVATE_KEY, A random string with a length of no less than 32 characters is required for Seafile, which can be generated by using <code>pwgen -s 40 1</code></td>
-<td>(required)</td>
+<td><code>EMAIL_HOST_PASSWORD</code></td>
+<td>Password for authentication</td>
+<td><code>password</code></td>
+</tr>
+<tr>
+<td><code>EMAIL_PORT</code></td>
+<td>SMTP server port</td>
+<td><code>25</code>, <code>465</code>, or <code>587</code></td>
+</tr>
+<tr>
+<td><code>DEFAULT_FROM_EMAIL</code></td>
+<td>Default From header</td>
+<td><code>noreply@example.com</code></td>
+</tr>
+<tr>
+<td><code>SERVER_EMAIL</code></td>
+<td>Sender for error reporting</td>
+<td><code>noreply@example.com</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="seadb-settings">SeaDB settings<a class="headerlink" href="#seadb-settings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SEADB_SERVER_URL</code></td>
-<td>SeaDB server URL</td>
-<td><code>http://seadb</code></td>
-</tr>
-<tr>
-<td><code>SEADB_SERVER_ACCESS_TOEKN</code></td>
-<td>Access token for SeaDB server</td>
-<td>(required)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="seasearch-settings">SeaSearch Settings<a class="headerlink" href="#seasearch-settings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SEASEARCH_URL</code></td>
-<td>Your SeaSearch server API endpoint url, e.g., <code>http://&lt;your seasearch host&gt;:4080</code></td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>SEASEARCH_TOKEN</code></td>
-<td>Your authorization token for accessing SeaSearch API, which can be constructed in <code>echo -n '&lt;your_seasearch_username&gt;:&lt;your_seasearch_password&gt;' | base64</code></td>
-<td>(required)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="mysql-settings">Mysql Settings<a class="headerlink" href="#mysql-settings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SEAQA_MYSQL_DB_HOST</code></td>
-<td>The host of MySQL server</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_PORT</code></td>
-<td>The port of MySQL server</td>
-<td><code>3306</code></td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_USER</code></td>
-<td>The user for accessing MySQL server</td>
-<td><code>seaticket</code></td>
-</tr>
-<tr>
-<td><code>SEAQA_MYSQL_DB_PASSWORD</code></td>
-<td>The password of MySQL server</td>
-<td>(none)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="redis-settings">Redis Settings<a class="headerlink" href="#redis-settings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>REDIS_HOST</code></td>
-<td>The host of Redis server</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>REDIS_PORT</code></td>
-<td>The port of Redis server</td>
-<td><code>6379</code></td>
-</tr>
-<tr>
-<td><code>REDIS_PASSWORD</code></td>
-<td>The password of Redis server</td>
-<td>(none)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="s3-settings">S3 Settings<a class="headerlink" href="#s3-settings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>S3_HOST</code></td>
-<td>S3 storage backend API endpoint URL (e.g., <code>https://s3-endpoint.example.com</code>. For AWS S3, the <code>S3_HOST</code> can be set from <code>https://s3.&lt;region&gt;.amazonaws.com</code>)</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_KEY_ID</code></td>
-<td>S3 storage backend key ID</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_SECRET_KEY</code></td>
-<td>S3 storage backend secret key</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_FILE_BUCKET</code></td>
-<td>Name of the bucket for saving upload files</td>
-<td>(required)</td>
-</tr>
-<tr>
-<td><code>S3_WEB_CRAWL_BUCKET</code></td>
-<td>Name of the bucket for saving web-crawl data</td>
-<td>(required)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="advanced-system-systems">Advanced system systems<a class="headerlink" href="#advanced-system-systems" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SEAQA_LOG_TO_STDOUT</code></td>
-<td>Record logs to container standard output</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>TIME_ZONE</code></td>
-<td>Timezone of SeaTicket server</td>
-<td><code>UTC</code></td>
-</tr>
-</tbody>
-</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>EMAIL_USE_TLS</code> (and any SSL flag) cannot be set via environment variables or <code>seaticket.yaml</code>. Use <code>seaqa_web_settings.py</code> instead.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Add the following lines to <code>seaqa_web_settings.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp.example.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@example.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="n">EMAIL_HOST_USER</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="n">EMAIL_HOST_USER</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">SMTP without authentication</p>
+<p>If you want to use the email service without authentication, leave <code>EMAIL_HOST_USER</code> and <code>EMAIL_HOST_PASSWORD</code> <strong>blank</strong> (<code>''</code>).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">TLS only</p>
+<p>SeaTicket only exposes the <code>EMAIL_USE_TLS</code> flag. SSL-specific toggles are not supported; use port <code>465</code> with TLS disabled if your provider requires implicit SSL.</p>
+</div>
+<p>Restart SeaTicket after updating SMTP configuration.</p>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
+<p>If email sending does not work, check <code>seaqa-web</code> logs for SMTP errors. You can also use a tool like <a href="https://github.com/jetmore/swaks">Swaks</a> to verify SMTP settings.</p>
+<div class="highlight"><pre><span></span><code>swaks<span class="w"> </span>--auth<span class="w"> </span>-tls<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--server<span class="w"> </span>&lt;EMAIL_HOST&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--protocol<span class="w"> </span>SMTP<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span>&lt;EMAIL_PORT&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--au<span class="w"> </span>&lt;EMAIL_HOST_USER&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ap<span class="w"> </span>&lt;EMAIL_HOST_PASSWORD&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from<span class="w"> </span>&lt;DEFAULT_FROM_EMAIL&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--to<span class="w"> </span>&lt;TO_ADDRESS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h-Subject:<span class="w"> </span><span class="s2">&quot;Subject of the mail&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--body<span class="w"> </span><span class="s1">&#39;Test email!&#39;</span>
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="gmail">Gmail<a class="headerlink" href="#gmail" title="Permanent link">&para;</a></h3>
+<p>If you are using Gmail as email server, you can use the following settings.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Environment variables / seaticket.yaml</label><label for="__tabbed_2_2">Configuration file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp.gmail.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp.gmail.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;username@gmail.com&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Allow access to less secure apps</p>
+<p>Google blocks external apps by default. If you enable 2-step verification, you need an <a href="https://support.google.com/accounts/answer/185833">App Password</a>. Otherwise, enable <a href="https://support.google.com/accounts/answer/6010255">Less Secure Apps</a>.</p>
+</div>
+<h3 id="brevo">Brevo<a class="headerlink" href="#brevo" title="Permanent link">&para;</a></h3>
+<p>SeaTicket Cloud can use the SMTP relay of Brevo.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Environment variables / seaticket.yaml</label><label for="__tabbed_3_2">Configuration file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp-relay.sendinblue.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@domain.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;xsmtpsib-xxx&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;SeaTicket &lt;noreply@domain.com&gt;&#39;</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;noreply@domain.com&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;smtp-relay.sendinblue.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@domain.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;xsmtpsib-xxx&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;SeaTicket &lt;noreply@domain.com&gt;&#39;</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;noreply@domain.com&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="infomaniak">Infomaniak<a class="headerlink" href="#infomaniak" title="Permanent link">&para;</a></h3>
+<p>If you are using Infomaniak as email server, you can use the following settings.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Environment variables / seaticket.yaml</label><label for="__tabbed_4_2">Configuration file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">SSL support missing</p>
+<p>Infomaniak requires SSL instead of TLS, therefore a configuration via TLS only is not possible. Please use the configuration file approach instead.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">EMAIL_USE_TLS</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">EMAIL_USE_SSL</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">EMAIL_HOST</span> <span class="o">=</span> <span class="s1">&#39;mail.infomaniak.com&#39;</span>
+<span class="n">EMAIL_HOST_USER</span> <span class="o">=</span> <span class="s1">&#39;username@domain.com&#39;</span>
+<span class="n">EMAIL_HOST_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
+<span class="n">EMAIL_PORT</span> <span class="o">=</span> <span class="mi">465</span>
+<span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;SeaTicket &lt;noreply@domain.com&gt;&#39;</span>
+<span class="n">SERVER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;noreply@domain.com&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
@@ -1492,7 +1466,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../setup/setup_seaticket_single/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup SeaTicket">
+          <a href="../seaticket_yaml/" class="md-footer__link md-footer__link--prev" aria-label="Previous: seaticket.yaml">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1502,20 +1476,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Setup SeaTicket
+                seaticket.yaml
               </div>
             </div>
           </a>
         
         
           
-          <a href="../seaticket_yaml/" class="md-footer__link md-footer__link--next" aria-label="Next: seaticket.yaml">
+          <a href="../seaqa_web_settings/" class="md-footer__link md-footer__link--next" aria-label="Next: seaqa_web_settings.py">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                seaticket.yaml
+                seaqa_web_settings.py
               </div>
             </div>
             <div class="md-footer__button md-icon">
