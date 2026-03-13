@@ -5,7 +5,7 @@
 
 ## Team role permissions
 
-SeaTicket provides built-in **team roles**, and each role has a set of permissions. You can customize these permissions with the `ENABLED_ROLE_PERMISSIONS` setting. This is useful for controlling which plans can create projects, groups, or use SAML.
+SeaTicket provides built-in **team roles**, and each role has a set of permissions. You can customize these permissions with the `ENABLED_ROLE_PERMISSIONS` setting.
 
 Built-in team roles:
 
@@ -77,12 +77,24 @@ SITE_TITLE = 'SeaTicket'
 PRIVACY_POLICY_LINK = 'https://your-domain/policy'
 TERMS_OF_SERVICE_LINK = 'https://your-domain/terms'
 
-
-# Redirect URL when logout，if not set, it will redirect to the SeaTable default page of logout
+# Redirect URL after logout; falls back to the default logout page when empty
 LOGOUT_REDIRECT_URL = 'https://example.com/<your-own-logout-page>'
+
+# Custom language code choices (overrides defaults in `settings.py` when needed)
+LANGUAGES = (
+    ('en', 'English'),
+    ('zh-cn', '简体中文'),
+    ('zh-tw', '繁體中文'),
+)
+
+# Force default language for anonymous users (e.g., 'en', 'zh-cn')
+FORCE_DEFAULT_LANGUAGE = ''
+
+# Path to the background image file of login page(relative to the media path)
+LOGIN_BG_IMAGE_PATH = 'img/login-bg.jpg'
 ```
 
-## Branding & UI
+## UI customization
 
 Visual branding and UI assets for the web interface. Default assets use `LOGO_PATH`/`FAVICON_PATH` values, while `CUSTOM_*` paths are optional overrides that only take effect when the corresponding files exist.
 
@@ -136,6 +148,8 @@ Options for registration, activation, and sign-up restrictions. These settings c
 ```python
 # Allow users to self-register on web UI
 ENABLE_SIGNUP = False
+# Default web form uses phone-based registration if enabled
+USE_PHONE_REGISTRATION_BY_DEFAULT = False
 # Auto-activate after sign-up
 ACTIVATE_AFTER_REGISTRATION = True
 
@@ -176,7 +190,7 @@ USER_PASSWORD_STRENGTH_LEVEL = 3
 # when True, check password strength level, STRONG(or above) is allowed
 USER_STRONG_PASSWORD_REQUIRED = False
 
-# Force user to change password when admin add/reset a user.
+# Force user to change password when admin adds/resets a user.
 FORCE_PASSWORD_CHANGE = True
 
 # Whether to allow SSO users to set a local password; default True, admin or user can set a local password by 'Reset password'
@@ -185,8 +199,20 @@ ENABLE_SSO_USER_CHANGE_PASSWORD = True
 # Whether to allow LDAP users to set a local password; default False, when True, admin or user can set a local password by 'Reset password'
 ENABLE_LDAP_USER_CHANGE_PASSWORD = False
 
-# Age of cookie, in seconds (default: 2 weeks).
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2
+# Whether or not activate inactive user on first login. Mainly used in LDAP user sync.
+ACTIVATE_AFTER_FIRST_LOGIN = False
+
+# Whether to allow users to delete their own accounts
+ENABLE_DELETE_ACCOUNT = True
+
+# Whether to allow users to update their own information
+ENABLE_UPDATE_USER_INFO = True
+
+# Allow users to bind phone numbers for login
+ENABLE_BIND_PHONE = False
+
+# Age of cookie, in seconds (example: 2 weeks). Default in core is 1 day.
+SESSION_COOKIE_AGE = 60 * 60 * 24
 ```
 
 ## Security settings
@@ -221,6 +247,8 @@ After that, users will see a “Two-Factor Authentication” section in the user
 ```python
 # Enable TOTP-based two factor
 ENABLE_TWO_FACTOR_AUTH = False
+# URL to redirect users for OTP setup when 2FA is required but not yet configured (defaults to `/profile/two_factor_authentication/setup/`)
+OTP_LOGIN_URL = '/profile/two_factor_authentication/setup/'
 # Force every user to enable 2FA
 ENABLE_FORCE_2FA_TO_ALL_USERS = False
 # Days to remember trusted devices
@@ -235,6 +263,15 @@ ENABLE_SMS_LOGIN = False
 SEND_SMS_ATTEMPT_LIMIT = 5
 # SMS verification code attempt timeout in seconds
 SEND_SMS_ATTEMPT_TIMEOUT = 60 * 60  # 1h
+
+# Aliyun SMS provider configuration used by registration/SMS login flows
+ALIYUN_SMS_CONFIG = {
+    'accessKeyId': '',
+    'accessKeySecret': '',
+    'signName': '',
+    'templateCode': '',
+    'regionId': 'cn-hangzhou',
+}
 ```
 
 ## User profile options
@@ -296,7 +333,30 @@ API_THROTTLE_RATES = {
 ```
 
 ## Trash cleaning interval
+
 ```python
 # trash cleanning interval by days
 TRASH_CLEAN_AFTER_DAYS = 30
+```
+
+## Project settings
+
+Settings for project file upload limits.
+
+```python
+# Maximum size for project image uploads (in MB)
+PROJECT_IMAGE_MAX_SIZE = 10  # 10MB
+# Maximum size for project file uploads (in MB)
+PROJECT_FILE_MAX_SIZE = 25  # 25MB
+```
+
+## AI chat settings
+
+Settings for AI chat functionality, controlling how many comments are fetched when AI processes tickets and external issues.
+
+```python
+# Maximum number of comments to fetch for each ticket in AI chat
+AI_CHAT_TICKET_MAX_COMMENTS_NUM = 20
+# Maximum number of comments to fetch for each GitHub issue in AI chat
+AI_CHAT_GITHUB_ISSUE_MAX_COMMENTS_NUM = 20
 ```
