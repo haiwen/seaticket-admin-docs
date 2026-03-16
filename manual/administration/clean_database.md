@@ -1,1 +1,126 @@
-# Clean database
+# Clean Database
+
+## SeaTicket Indexer periodic cleanup
+
+SeaTicket Indexer runs periodic cleanup tasks (default: every 24 hours). The tasks remove records in the following databases.
+
+### SeaTicket database (project connection metadata)
+
+* Deleted connections in `project_connection`
+* Deleted projects in `deleted_projects` (after cleanup, related connections for the project are removed)
+
+### SeaDB (connection data tables)
+
+* For recently updated connections (default: updated within the last 7 days)
+  * Delete rows that are marked `deleted=true` and have been deleted for more than 14 days
+* For deleted connections
+  * Drop the SeaDB tables that belong to the connection
+
+
+### Login
+
+Use the following command to clean the login records:
+
+```
+use sea_qa;
+DELETE FROM sysadmin_extra_userloginlog WHERE to_days(now()) - to_days(login_date) > 90;
+```
+
+## Clean chat sessions
+
+SeaTicket Web provides a management command to clean old chat data in batches. By default, it keeps the last 90 days.
+
+!!! tip
+    Enter into the docker image, then go to `/data/dev/seaqa-web`
+
+```
+python3 manage.py clean_chat_sessions
+```
+
+You can change the retention period by passing `--days`:
+
+```
+python3 manage.py clean_chat_sessions --days=90
+```
+
+This command deletes:
+
+* `chat_sessions` older than the cutoff date
+* `chat_messages` linked to expired sessions
+* `chat_message_thought_process` linked to expired sessions
+* Orphaned `chat_messages` and `chat_message_thought_process` rows with no corresponding session
+
+You can also clean these tables manually if you like as following.
+
+```
+use sea_qa;
+DELETE FROM chat_messages
+WHERE EXISTS (
+  SELECT 1 FROM chat_sessions
+  WHERE session_uuid = chat_messages.session_uuid
+  AND updated_at < '{cutoff_date}'
+);
+
+DELETE FROM chat_message_thought_process
+WHERE EXISTS (
+  SELECT 1 FROM chat_sessions
+  WHERE session_uuid = chat_message_thought_process.session_uuid
+  AND updated_at < '{cutoff_date}'
+);
+
+DELETE FROM chat_sessions
+WHERE updated_at < '{cutoff_date}';
+
+DELETE FROM chat_messages
+WHERE NOT EXISTS (
+  SELECT 1 FROM chat_sessions
+  WHERE session_uuid = chat_messages.session_uuid
+);
+
+DELETE FROM chat_message_thought_process
+WHERE NOT EXISTS (
+  SELECT 1 FROM chat_sessions
+  WHERE session_uuid = chat_message_thought_process.session_uuid
+);
+```
+
+## Clean notifications
+
+SeaTicket Events runs a periodic notification cleanup task (default: every 24 hours). By default it keeps the last 30 days, and the interval/retention can be configured in `NOTIFICATION_CLEANER`.
+
+This task deletes old records in batches from:
+
+* `user_notifications`
+* `project_notification`
+
+You can also clean these tables manually if you like as following.
+
+```
+use sea_qa;
+DELETE FROM user_notifications WHERE `timestamp` < '{cutoff_date}';
+
+DELETE FROM project_notification WHERE `timestamp` < '{cutoff_date}';
+```
+
+
+## Clean Oauth and Project API tokens 
+
+There are two tables in sea_qa databases that are related to API tokens.
+
+* OAuth tokens can be used to access all APIs, while Project API tokens are limited to project-scoped APIs. Note that a separate token is created for every App.
+
+When you have many clients connected to the server, this table can have large number of rows. Many of them are no longer actively used. You may clean the tokens that are not used in a recent period, by the following SQL query:
+
+```
+DELETE FROM api_token WHERE created < xxxx;
+DELETE FROM project_api_token WHERE created < xxxx;
+```
+
+`xxxx` is a datetime value (for example, `'2024-01-01 00:00:00'`) for the time before which tokens will be deleted.
+
+To be safe, you can first check how many tokens will be removed:
+
+```
+SELECT * FROM api_token WHERE created < xxxx;
+SELECT * FROM project_api_token WHERE created < xxxx;
+```
