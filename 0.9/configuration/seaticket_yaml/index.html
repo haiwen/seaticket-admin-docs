@@ -27,7 +27,7 @@
     
     
       
-        <title>seaticket.yaml - SeaTicket Admin Manual</title>
+        <title>seaticket_config.yaml - SeaTicket Admin Manual</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#seaticketyaml" class="md-skip">
+        <a href="#seaticket_configyaml" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              seaticket.yaml
+              seaticket_config.yaml
             
           </span>
         </div>
@@ -808,7 +808,7 @@
   <span class="md-ellipsis">
     
   
-    seaticket.yaml
+    seaticket_config.yaml
   
 
     
@@ -826,7 +826,7 @@
   <span class="md-ellipsis">
     
   
-    seaticket.yaml
+    seaticket_config.yaml
   
 
     
@@ -852,10 +852,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#file-structure-of-seaticketyaml" class="md-nav__link">
+  <a href="#file-structure-of-seaticket_configyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File structure of seaticket.yaml
+        File structure of seaticket_config.yaml
       
     </span>
   </a>
@@ -1193,10 +1193,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#file-structure-of-seaticketyaml" class="md-nav__link">
+  <a href="#file-structure-of-seaticket_configyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File structure of seaticket.yaml
+        File structure of seaticket_config.yaml
       
     </span>
   </a>
@@ -1312,10 +1312,10 @@
   
 
 
-<h1 id="seaticketyaml">seaticket.yaml<a class="headerlink" href="#seaticketyaml" title="Permanent link">&para;</a></h1>
-<p>Besides <a href="../environment_variables/"><code>.env</code></a> for general settings, the <code>seaticket.yaml</code> is used to specify the detailed configurations of the all components in SeaTicket docker.</p>
-<h2 id="file-structure-of-seaticketyaml">File structure of seaticket.yaml<a class="headerlink" href="#file-structure-of-seaticketyaml" title="Permanent link">&para;</a></h2>
-<p><code>seaticket.yaml</code> consists of the following sections (i.e., <code>global</code> and name of each component):</p>
+<h1 id="seaticket_configyaml">seaticket_config.yaml<a class="headerlink" href="#seaticket_configyaml" title="Permanent link">&para;</a></h1>
+<p>Besides <a href="../environment_variables/"><code>.env</code></a> for general settings, the <code>seaticket_config.yaml</code> is used to specify the detailed configurations of the all components in SeaTicket docker.</p>
+<h2 id="file-structure-of-seaticket_configyaml">File structure of seaticket_config.yaml<a class="headerlink" href="#file-structure-of-seaticket_configyaml" title="Permanent link">&para;</a></h2>
+<p><code>seaticket_config.yaml</code> consists of the following sections (i.e., <code>global</code> and name of each component):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ... configurations for all components</span>
 <span class="nt">seaqa-ai</span><span class="p">:</span>
@@ -1330,7 +1330,7 @@
 <h2 id="global-settings">Global settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h2>
 <p>The global section is generally used to specify configuration items that are common to all SeaTickets components.</p>
 <h3 id="internal-server-urls-used-for-communication-between-seaticket-components-cluster-only">Internal server URLs used for communication between SeaTicket components (cluster only)<a class="headerlink" href="#internal-server-urls-used-for-communication-between-seaticket-components-cluster-only" title="Permanent link">&para;</a></h3>
-<p>In cluster mode, you need to specify the URLs used for internal communication between components via <code>seaticket.yaml</code>:</p>
+<p>In cluster mode, you need to specify the URLs used for internal communication between components via <code>seaticket_config.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ... other configurations</span>
 <span class="w">  </span><span class="nt">SEAQA_AI_INNER_SERVER_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;your seaqa-ai server host&gt;:8887</span>
@@ -1339,9 +1339,9 @@
 </code></pre></div>
 <h3 id="llms-configurations">LLMs configurations<a class="headerlink" href="#llms-configurations" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">To ensure the SeaTicket service functions normally, please ensure that <code>seaticket.yaml</code> contains <strong>at least one valid LLM</strong></p>
+<p class="admonition-title">To ensure the SeaTicket service functions normally, please ensure that <code>seaticket_config.yaml</code> contains <strong>at least one valid LLM</strong></p>
 </div>
-<p>For LLMs configurations, you should configure a list option <code>LLM_MODELS</code> in <code>seaticket.yaml</code>:</p>
+<p>For LLMs configurations, you should configure a list option <code>LLM_MODELS</code> in <code>seaticket_config.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">LLM_MODELS</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># &lt;model 1 configuration&gt;</span>
@@ -1443,14 +1443,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Seafile AI utilizes <a href="https://docs.litellm.ai/docs/">LiteLLM</a> to interact with LLM services. For a complete list of supported LLM providers, please refer to <a href="https://docs.litellm.ai/docs/providers">this documentation</a>. Then fill the following fields in your <code>seaticket.yaml</code>:</p>
+<p>Seafile AI utilizes <a href="https://docs.litellm.ai/docs/">LiteLLM</a> to interact with LLM services. For a complete list of supported LLM providers, please refer to <a href="https://docs.litellm.ai/docs/providers">this documentation</a>. Then fill the following fields in your <code>seaticket_config.yaml</code>:</p>
 <p>For example, if you are using a LLM service with <strong><em>OpenAI-compatible endpoints</em></strong>, you should set <code>type</code> to <code>other</code>, and set other LLM configuration items accurately.</p>
 </div>
 </div>
 </div>
 <h3 id="embedding-model">Embedding model<a class="headerlink" href="#embedding-model" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">To ensure the SeaTicket service functions normally, please ensure that <code>seaticket.yaml</code> has specified embedding model</p>
+<p class="admonition-title">To ensure the SeaTicket service functions normally, please ensure that <code>seaticket_config.yaml</code> has specified embedding model</p>
 </div>
 <p>The configuration of embedding models is similar to that of an element in the <code>LLM_MODELS</code> list:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>

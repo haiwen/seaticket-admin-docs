@@ -782,10 +782,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#modify-seaticketyaml-and-add-llm-models-configuration" class="md-nav__link">
+  <a href="#modify-seaticket_configyaml-and-add-llm-models-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modify seaticket.yaml and add LLM models configuration
+        Modify seaticket_config.yaml and add LLM models configuration
       
     </span>
   </a>
@@ -998,7 +998,7 @@
   <span class="md-ellipsis">
     
   
-    seaticket.yaml
+    seaticket_config.yaml
   
 
     
@@ -1290,10 +1290,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#modify-seaticketyaml-and-add-llm-models-configuration" class="md-nav__link">
+  <a href="#modify-seaticket_configyaml-and-add-llm-models-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modify seaticket.yaml and add LLM models configuration
+        Modify seaticket_config.yaml and add LLM models configuration
       
     </span>
   </a>
@@ -1439,12 +1439,12 @@ USE<span class="w"> </span>seaticket_db<span class="p">;</span>
 SOURCE<span class="w"> </span>/tmp/mysql.sql<span class="p">;</span>
 </code></pre></div>
 <h3 id="download-resource-files">Download resource files<a class="headerlink" href="#download-resource-files" title="Permanent link">&para;</a></h3>
-<p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>seaticket.yaml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
+<p>To deploy SeaTicket with Docker, you have to <code>.env</code>, <code>caddy.yml</code>, <code>seaqa-web.yml</code>, <code>seaqa-indexer.yml</code>, <code>seaqa-ai.yml</code>, <code>seaqa-events.yml</code>, and <code>seaticket_config.yaml</code> in a directory (e.g., <code>/opt/seaticket</code>):</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/seaticket
 <span class="nb">cd</span><span class="w"> </span>/opt/seaticket
 
 wget<span class="w"> </span>-O<span class="w"> </span>.env<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/env
-wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/seaticket.yaml
+wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/seaticket_config.yaml
 wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/caddy.yml
 wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/seaqa-web.yml
 wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticket/seaqa-indexer.yml
@@ -1574,7 +1574,7 @@ wget<span class="w"> </span>https://manual.seaticket.ai/0.9/repo/docker/seaticke
 </tr>
 </tbody>
 </table>
-<h3 id="modify-seaticketyaml-and-add-llm-models-configuration">Modify <code>seaticket.yaml</code> and add LLM models configuration<a class="headerlink" href="#modify-seaticketyaml-and-add-llm-models-configuration" title="Permanent link">&para;</a></h3>
+<h3 id="modify-seaticket_configyaml-and-add-llm-models-configuration">Modify <code>seaticket_config.yaml</code> and add LLM models configuration<a class="headerlink" href="#modify-seaticket_configyaml-and-add-llm-models-configuration" title="Permanent link">&para;</a></h3>
 <p>Please refer <a href="../../configuration/seaticket_yaml/">here</a> for the details.</p>
 <h2 id="start-seaticket-server">Start SeaTicket server<a class="headerlink" href="#start-seaticket-server" title="Permanent link">&para;</a></h2>
 <p>Modify <code>COMPOSE_FILE</code> in <code>.env</code> file:</p>
