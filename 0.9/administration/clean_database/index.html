@@ -23,7 +23,7 @@
     
     
       
-        <title>Clean database - SeaTicket Admin Manual</title>
+        <title>Clean Database - SeaTicket Admin Manual</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Clean database
+              Clean Database
             
           </span>
         </div>
@@ -987,7 +987,7 @@
   <span class="md-ellipsis">
     
   
-    Cleanup database
+    Cleanup Database
   
 
     
@@ -1056,6 +1056,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seaticket-indexer-periodic-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SeaTicket Indexer periodic cleanup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SeaTicket Indexer periodic cleanup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seaticket-database-project-connection-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SeaTicket database (project connection metadata)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seadb-connection-data-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SeaDB (connection data tables)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Login
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-chat-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean chat sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-portal-external-invitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean portal external invitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-ai-usage-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean AI usage statistics
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1074,7 +1187,76 @@
   
 
 
-<h1 id="clean-database">Clean database<a class="headerlink" href="#clean-database" title="Permanent link">&para;</a></h1>
+<h1 id="clean-database">Clean Database<a class="headerlink" href="#clean-database" title="Permanent link">&para;</a></h1>
+<h2 id="session">Session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h2>
+<p>Use the following command to clear expired session records in sea_qa database:</p>
+<div class="highlight"><pre><span></span><code>cd seaqa-web
+python3 manage.py clearsessions
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Enter into the docker image, then go to <code>/opt/seaticket/seaqa-web</code></p>
+</div>
+<h2 id="seaticket-indexer-periodic-cleanup">SeaTicket Indexer periodic cleanup<a class="headerlink" href="#seaticket-indexer-periodic-cleanup" title="Permanent link">&para;</a></h2>
+<p>SeaTicket Indexer runs periodic cleanup tasks (default: every 24 hours). The tasks remove records in the following databases.</p>
+<h3 id="seaticket-database-project-connection-metadata">SeaTicket database (project connection metadata)<a class="headerlink" href="#seaticket-database-project-connection-metadata" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Deleted connections in <code>project_connection</code></li>
+<li>Deleted projects in <code>deleted_projects</code> (after cleanup, related connections for the project are removed)</li>
+</ul>
+<h3 id="seadb-connection-data-tables">SeaDB (connection data tables)<a class="headerlink" href="#seadb-connection-data-tables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For recently updated connections (default: updated within the last 7 days)</li>
+<li>Delete rows that are marked <code>deleted=true</code> and have been deleted for more than 14 days</li>
+<li>For deleted connections</li>
+<li>Drop the SeaDB tables that belong to the connection</li>
+</ul>
+<h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
+<p>Use the following command to clean the login records:</p>
+<div class="highlight"><pre><span></span><code>use sea_qa;
+DELETE FROM sysadmin_extra_userloginlog WHERE to_days(now()) - to_days(login_date) &gt; 90;
+</code></pre></div>
+<h2 id="clean-chat-sessions">Clean chat sessions<a class="headerlink" href="#clean-chat-sessions" title="Permanent link">&para;</a></h2>
+<p>SeaTicket Web provides a management command to clean old chat data in batches. By default, it keeps the last 90 days.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Enter into the docker image, then go to <code>/opt/seaticket/seaqa-web</code></p>
+</div>
+<div class="highlight"><pre><span></span><code>python3 manage.py clean_chat_sessions
+</code></pre></div>
+<p>You can change the retention period by passing <code>--days</code>:</p>
+<div class="highlight"><pre><span></span><code>python3 manage.py clean_chat_sessions --days=90
+</code></pre></div>
+<p>This command deletes:</p>
+<ul>
+<li><code>chat_sessions</code> older than the cutoff date</li>
+<li><code>chat_messages</code> linked to expired sessions</li>
+<li><code>chat_message_thought_process</code> linked to expired sessions</li>
+<li>Orphaned <code>chat_messages</code> and <code>chat_message_thought_process</code> rows with no corresponding session</li>
+</ul>
+<h2 id="clean-notifications">Clean notifications<a class="headerlink" href="#clean-notifications" title="Permanent link">&para;</a></h2>
+<p>SeaTicket Events runs a periodic notification cleanup task (default: every 24 hours). By default it keeps the last 30 days, and the interval/retention can be configured in <code>NOTIFICATION_CLEANER</code>.</p>
+<p>This task deletes old records in batches from:</p>
+<ul>
+<li><code>user_notifications</code></li>
+<li><code>project_notification</code></li>
+</ul>
+<p>You can also clean these tables manually as follows.</p>
+<div class="highlight"><pre><span></span><code>use sea_qa;
+DELETE FROM user_notifications WHERE `timestamp` &lt; &#39;&lt;cutoff_date&gt;&#39;;
+
+DELETE FROM project_notification WHERE `timestamp` &lt; &#39;&lt;cutoff_date&gt;&#39;;
+</code></pre></div>
+<h2 id="clean-portal-external-invitations">Clean portal external invitations<a class="headerlink" href="#clean-portal-external-invitations" title="Permanent link">&para;</a></h2>
+<p>Portal external invitation tokens that expire after a fixed time window (default: 72 hours). Expired invitations should be cleaned to reduce stale records.</p>
+<p>You can also clean these tables manually as follows.</p>
+<div class="highlight"><pre><span></span><code>DELETE FROM portal_external_invitations WHERE expire_time &lt; &#39;&lt;cutoff_date&gt;&#39;;
+</code></pre></div>
+<h2 id="clean-ai-usage-statistics">Clean AI usage statistics<a class="headerlink" href="#clean-ai-usage-statistics" title="Permanent link">&para;</a></h2>
+<p>AI usage statistics are stored in <code>ai_usage_statistics</code> and should be cleaned by date. The filter field is <code>date</code>.</p>
+<p>You can also clean these tables manually as follows.</p>
+<div class="highlight"><pre><span></span><code>DELETE FROM ai_usage_statistics WHERE `date` &lt; &#39;&lt;cutoff_date&gt;&#39;;
+</code></pre></div>
 
 
 
