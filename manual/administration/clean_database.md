@@ -62,39 +62,6 @@ This command deletes:
 * `chat_message_thought_process` linked to expired sessions
 * Orphaned `chat_messages` and `chat_message_thought_process` rows with no corresponding session
 
-You can also clean these tables manually as follows.
-
-```
-use sea_qa;
-DELETE FROM chat_messages
-WHERE EXISTS (
-  SELECT 1 FROM chat_sessions
-  WHERE session_uuid = chat_messages.session_uuid
-  AND updated_at < '<cutoff_date>'
-);
-
-DELETE FROM chat_message_thought_process
-WHERE EXISTS (
-  SELECT 1 FROM chat_sessions
-  WHERE session_uuid = chat_message_thought_process.session_uuid
-  AND updated_at < '<cutoff_date>'
-);
-
-DELETE FROM chat_sessions
-WHERE updated_at < '<cutoff_date>';
-
-DELETE FROM chat_messages
-WHERE NOT EXISTS (
-  SELECT 1 FROM chat_sessions
-  WHERE session_uuid = chat_messages.session_uuid
-);
-
-DELETE FROM chat_message_thought_process
-WHERE NOT EXISTS (
-  SELECT 1 FROM chat_sessions
-  WHERE session_uuid = chat_message_thought_process.session_uuid
-);
-```
 
 ## Clean notifications
 
